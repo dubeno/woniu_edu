@@ -1,27 +1,31 @@
 {
-  "name": "newsnow",
+  "name": "lovart-portrait-os",
   "type": "module",
-  "version": "0.0.30",
+  "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.5.2",
-  "author": {
-    "url": "https://github.com/dubeno/",
-    "email": "1510508145@qq.com",
-    "name": "wx:ppoluo"
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=10.0.0"
   },
-  "homepage": "https://github.com/ourongxing/newsnow",
+  "author": {
+    "url": "https://github.com/yourusername/",
+    "email": "your@email.com",
+    "name": "Lovart Team"
+  },
+  "homepage": "https://github.com/yourusername/lovart-portrait-os",
+  "description": "AI Portrait Production OS for Photo Studios",
   "scripts": {
-    "dev": "npm run presource && vite dev",
-    "build": "npm run presource && vite build",
+    "dev": "vite dev",
+    "build": "vite build",
     "lint": "eslint",
-    "presource": "tsx ./scripts/favicon.ts && tsx ./scripts/source.ts",
     "start": "node --env-file .env.server dist/output/server/index.mjs",
     "preview": "cross-env CF_PAGES=1 npm run build && wrangler pages dev dist/output/public",
     "deploy": "cross-env CF_PAGES=1 npm run build && wrangler pages deploy dist/output/public",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.app.json",
     "release": "bumpp",
     "prepare": "simple-git-hooks",
-    "log": "wrangler pages deployment tail --project-name newsnow",
+    "log": "wrangler pages deployment tail --project-name lovart",
     "test": "vitest -c vitest.config.ts"
   },
   "dependencies": {
@@ -125,7 +129,9 @@
     "picomatch": "^4.0.2",
     "react": "^19",
     "db0": "^0.3.1",
-    "vite": "^6"
+    "vite": "^6",
+    "h3": "1.15.3",
+    "h3-nightly": "npm:h3@1.15.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

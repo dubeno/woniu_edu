@@ -1,0 +1,112 @@
+[
+  {
+    "id": "wedding-announcement-poster",
+    "name": "结婚官宣海报",
+    "description": "浪漫唯美的婚礼官宣海报",
+    "category": "wedding",
+    "enabled": true,
+    "icon": "💕",
+    "page": {
+      "title": "结婚官宣海报 AI 设计",
+      "subtitle": "浪漫唯美的婚礼官宣",
+      "features": ["💕 浪漫唯美", "✨ 高级设计", "💰 29.9元起"],
+      "uploadText": "上传婚纱照/双人照",
+      "processingText": "AI 官宣海报设计中...",
+      "customFields": [
+        { "key": "couple_names", "label": "新人姓名", "type": "text", "required": true, "placeholder": "例如：李雷 & 韩梅梅" },
+        { "key": "announcement_text", "label": "官宣文案", "type": "textarea", "required": false, "placeholder": "例如：我们官宣啦！感谢遇见，往后心仪的女孩，常驻身旁" },
+        { "key": "wedding_date", "label": "婚礼日期", "type": "text", "required": false, "placeholder": "例如：2025年10月1日" },
+        { "key": "style_preference", "label": "风格偏好", "type": "text", "required": false, "placeholder": "例如：粉色浪漫、森系清新、经典优雅" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "设计浪漫唯美的结婚官宣海报。风格温馨浪漫、高级典雅。将上传的新人照片进行精美排版，营造幸福甜蜜的氛围。背景使用柔和的粉色、白色或暖色调，添加花卉、心形、光斑、撕纸效果等浪漫装饰元素。文字排版优雅，使用手写体或优雅的衬线字体。整体设计适合社交媒体分享，竖版构图，具有现代感和艺术感",
+      "user_prompt_placeholder": "例如：粉色背景，撕纸效果，手写字体，添加心形和星星装饰",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。新人：「{couple_names}」，官宣文案：「{announcement_text}」，日期：「{wedding_date}」，风格：「{style_preference}」",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "wedding-welcome-poster",
+    "name": "迎宾海报",
+    "description": "婚礼现场迎宾海报设计",
+    "category": "wedding",
+    "enabled": true,
+    "icon": "🎊",
+    "page": {
+      "title": "迎宾海报 AI 设计",
+      "subtitle": "温馨浪漫的婚礼迎宾海报",
+      "features": ["🎊 温馨浪漫", "✨ 专业设计", "💰 29.9元起"],
+      "uploadText": "上传婚纱照/双人照",
+      "processingText": "AI 迎宾海报设计中...",
+      "customFields": [
+        { "key": "couple_names", "label": "新人姓名", "type": "text", "required": true, "placeholder": "例如：李雷 & 韩梅梅" },
+        { "key": "wedding_date", "label": "婚礼日期", "type": "text", "required": true, "placeholder": "例如：2025年10月1日" },
+        { "key": "venue_location", "label": "婚礼地点", "type": "text", "required": false, "placeholder": "例如：XX酒店宴会厅" },
+        { "key": "welcome_message", "label": "欢迎语", "type": "text", "required": false, "placeholder": "例如：欢迎参加我们的婚礼、诚挚欢迎您参加我们的婚礼" },
+        { "key": "design_style", "label": "设计风格", "type": "text", "required": false, "placeholder": "例如：经典优雅、森系清新、浪漫唯美、简约现代" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "设计婚礼迎宾海报。风格温馨浪漫、优雅大气。将上传的新人照片进行专业排版，营造庄重而温馨的氛围。背景使用柔和的色调（白色、浅灰、暖色等），添加花卉、丝带、几何图形等装饰元素。文字清晰易读，使用优雅的衬线字体或现代无衬线字体。包含欢迎语、新人姓名、婚礼日期、地点等关键信息。整体设计适合打印展示，横版或竖版构图，具有仪式感和高级感",
+      "user_prompt_placeholder": "例如：经典优雅风格，白色背景，金色装饰，简洁大气",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。新人：「{couple_names}」，日期：「{wedding_date}」，地点：「{venue_location}」，欢迎语：「{welcome_message}」，风格：「{design_style}」",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "wedding-poster",
+    "name": "婚礼海报/邀请函",
+    "description": "婚礼宣传海报设计",
+    "category": "wedding",
+    "enabled": true,
+    "icon": "💌",
+    "page": {
+      "title": "婚礼海报 AI 设计",
+      "subtitle": "浪漫唯美的婚礼宣传海报",
+      "features": ["💌 浪漫唯美", "✨ 高级设计", "💰 29.9元起"],
+      "uploadText": "上传婚纱照/双人照",
+      "processingText": "AI 海报设计中...",
+      "customFields": [
+        { "key": "couple_names", "label": "新人姓名", "type": "text", "required": true, "placeholder": "例如：李雷 & 韩梅梅" },
+        { "key": "wedding_date", "label": "婚礼日期", "type": "text", "required": true, "placeholder": "例如：2025年10月1日" },
+        { "key": "venue_location", "label": "婚礼地点", "type": "text", "required": false, "placeholder": "例如：XX酒店宴会厅" },
+        { "key": "poster_type", "label": "海报类型", "type": "text", "required": false, "placeholder": "例如：邀请函、宣传海报、迎宾海报" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "设计婚礼海报或邀请函。风格浪漫唯美、高级典雅。可根据上传的照片绘制插画风格新人形象，或直接美化排版。背景使用花卉、丝带、光斑、几何图形等元素装饰。字体优雅，信息清晰易读。适合用于社交媒体分享、打印展示等",
+      "user_prompt_placeholder": "例如：森系清新风格，水彩插画，绿植鲜花，金色装饰",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。新人：「{couple_names}」，日期：「{wedding_date}」，地点：「{venue_location}」，类型：「{poster_type}」",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  }
+]
+

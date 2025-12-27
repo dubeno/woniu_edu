@@ -30,17 +30,19 @@ const nitroOption: Parameters<typeof viteNitro>[0] = {
     "@shared": join(projectDir, "shared"),
     "#": join(projectDir, "server"),
   },
+  // 添加静态文件服务（用于照片访问）
+  publicAssets: [
+    {
+      baseURL: "/uploads",
+      dir: join(projectDir, "uploads"),
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    },
+  ],
 }
 
 if (process.env.VERCEL) {
   nitroOption.preset = "vercel-edge"
-  // You can use other online database, do it yourself. For more info: https://db0.unjs.io/connectors
   nitroOption.database = undefined
-  // nitroOption.vercel = {
-  //   config: {
-  //     cache: []
-  //   },
-  // }
 } else if (process.env.CF_PAGES) {
   nitroOption.preset = "cloudflare-pages"
   nitroOption.unenv = {
@@ -52,7 +54,7 @@ if (process.env.VERCEL) {
     default: {
       connector: "cloudflare-d1",
       options: {
-        bindingName: "NEWSNOW_DB",
+        bindingName: "LOVART_DB",
       },
     },
   }

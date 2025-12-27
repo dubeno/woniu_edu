@@ -1,6 +1,4 @@
 import { defineConfig, presetIcons, presetWind3, transformerDirectives, transformerVariantGroup } from "unocss"
-import { hex2rgba } from "@unocss/rule-utils"
-import { sources } from "./shared/sources"
 
 export default defineConfig({
   mergeSelectors: false,
@@ -12,16 +10,6 @@ export default defineConfig({
     }),
   ],
   rules: [
-    [/^sprinkle-(.+)$/, ([_, d], { theme }) => {
-      // @ts-expect-error >_<
-      const hex: any = theme.colors?.[d]?.[400]
-      if (hex) {
-        return {
-          "background-image": `radial-gradient(ellipse 80% 80% at 50% -30%,
-         rgba(${hex2rgba(hex)?.join(", ")}, 0.3), rgba(255, 255, 255, 0));`,
-        }
-      }
-    }],
     [
       "font-brand",
       {
@@ -36,14 +24,14 @@ export default defineConfig({
     "btn": "op50 hover:op85 cursor-pointer transition-all",
   },
   safelist: [
-    ...["orange", ...new Set(Object.values(sources).map(k => k.color))].map(k =>
-      `bg-${k} color-${k} border-${k} sprinkle-${k} shadow-${k}
-       bg-${k}-500 color-${k}-500
-       dark:bg-${k} dark:color-${k}`.trim().split(/\s+/)).flat(),
+    "bg-blue-500",
+    "bg-blue-600",
+    "text-blue-600",
+    "hover:bg-blue-700",
   ],
   extendTheme: (theme) => {
     // @ts-expect-error >_<
-    theme.colors.primary = theme.colors.red
+    theme.colors.primary = theme.colors.blue
     return theme
   },
 })

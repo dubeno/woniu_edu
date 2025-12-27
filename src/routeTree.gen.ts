@@ -11,10 +11,34 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TemplatesImport } from './routes/templates'
+import { Route as CategoriesImport } from './routes/categories'
+import { Route as BlogImport } from './routes/blog'
 import { Route as IndexImport } from './routes/index'
-import { Route as CColumnImport } from './routes/c.$column'
+import { Route as ScenesSceneIdImport } from './routes/scenes.$sceneId'
+import { Route as SceneSceneIdImport } from './routes/scene.$sceneId'
+import { Route as CategoryCategoryIdImport } from './routes/category.$categoryId'
+import { Route as BlogPostIdImport } from './routes/blog.$postId'
 
 // Create/Update Routes
+
+const TemplatesRoute = TemplatesImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CategoriesRoute = CategoriesImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogRoute = BlogImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -22,10 +46,28 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const CColumnRoute = CColumnImport.update({
-  id: '/c/$column',
-  path: '/c/$column',
+const ScenesSceneIdRoute = ScenesSceneIdImport.update({
+  id: '/scenes/$sceneId',
+  path: '/scenes/$sceneId',
   getParentRoute: () => rootRoute,
+} as any)
+
+const SceneSceneIdRoute = SceneSceneIdImport.update({
+  id: '/scene/$sceneId',
+  path: '/scene/$sceneId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CategoryCategoryIdRoute = CategoryCategoryIdImport.update({
+  id: '/category/$categoryId',
+  path: '/category/$categoryId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogPostIdRoute = BlogPostIdImport.update({
+  id: '/$postId',
+  path: '/$postId',
+  getParentRoute: () => BlogRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -39,11 +81,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/c/$column': {
-      id: '/c/$column'
-      path: '/c/$column'
-      fullPath: '/c/$column'
-      preLoaderRoute: typeof CColumnImport
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogImport
+      parentRoute: typeof rootRoute
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesImport
+      parentRoute: typeof rootRoute
+    }
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog/$postId': {
+      id: '/blog/$postId'
+      path: '/$postId'
+      fullPath: '/blog/$postId'
+      preLoaderRoute: typeof BlogPostIdImport
+      parentRoute: typeof BlogImport
+    }
+    '/category/$categoryId': {
+      id: '/category/$categoryId'
+      path: '/category/$categoryId'
+      fullPath: '/category/$categoryId'
+      preLoaderRoute: typeof CategoryCategoryIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/scene/$sceneId': {
+      id: '/scene/$sceneId'
+      path: '/scene/$sceneId'
+      fullPath: '/scene/$sceneId'
+      preLoaderRoute: typeof SceneSceneIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/scenes/$sceneId': {
+      id: '/scenes/$sceneId'
+      path: '/scenes/$sceneId'
+      fullPath: '/scenes/$sceneId'
+      preLoaderRoute: typeof ScenesSceneIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -51,39 +135,102 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface BlogRouteChildren {
+  BlogPostIdRoute: typeof BlogPostIdRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogPostIdRoute: BlogPostIdRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/c/$column': typeof CColumnRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/categories': typeof CategoriesRoute
+  '/templates': typeof TemplatesRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/scene/$sceneId': typeof SceneSceneIdRoute
+  '/scenes/$sceneId': typeof ScenesSceneIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/c/$column': typeof CColumnRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/categories': typeof CategoriesRoute
+  '/templates': typeof TemplatesRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/scene/$sceneId': typeof SceneSceneIdRoute
+  '/scenes/$sceneId': typeof ScenesSceneIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/c/$column': typeof CColumnRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/categories': typeof CategoriesRoute
+  '/templates': typeof TemplatesRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/category/$categoryId': typeof CategoryCategoryIdRoute
+  '/scene/$sceneId': typeof SceneSceneIdRoute
+  '/scenes/$sceneId': typeof ScenesSceneIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/c/$column'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/categories'
+    | '/templates'
+    | '/blog/$postId'
+    | '/category/$categoryId'
+    | '/scene/$sceneId'
+    | '/scenes/$sceneId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/c/$column'
-  id: '__root__' | '/' | '/c/$column'
+  to:
+    | '/'
+    | '/blog'
+    | '/categories'
+    | '/templates'
+    | '/blog/$postId'
+    | '/category/$categoryId'
+    | '/scene/$sceneId'
+    | '/scenes/$sceneId'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/categories'
+    | '/templates'
+    | '/blog/$postId'
+    | '/category/$categoryId'
+    | '/scene/$sceneId'
+    | '/scenes/$sceneId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CColumnRoute: typeof CColumnRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  CategoriesRoute: typeof CategoriesRoute
+  TemplatesRoute: typeof TemplatesRoute
+  CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
+  SceneSceneIdRoute: typeof SceneSceneIdRoute
+  ScenesSceneIdRoute: typeof ScenesSceneIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CColumnRoute: CColumnRoute,
+  BlogRoute: BlogRouteWithChildren,
+  CategoriesRoute: CategoriesRoute,
+  TemplatesRoute: TemplatesRoute,
+  CategoryCategoryIdRoute: CategoryCategoryIdRoute,
+  SceneSceneIdRoute: SceneSceneIdRoute,
+  ScenesSceneIdRoute: ScenesSceneIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +244,41 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/c/$column"
+        "/blog",
+        "/categories",
+        "/templates",
+        "/category/$categoryId",
+        "/scene/$sceneId",
+        "/scenes/$sceneId"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/c/$column": {
-      "filePath": "c.$column.tsx"
+    "/blog": {
+      "filePath": "blog.tsx",
+      "children": [
+        "/blog/$postId"
+      ]
+    },
+    "/categories": {
+      "filePath": "categories.tsx"
+    },
+    "/templates": {
+      "filePath": "templates.tsx"
+    },
+    "/blog/$postId": {
+      "filePath": "blog.$postId.tsx",
+      "parent": "/blog"
+    },
+    "/category/$categoryId": {
+      "filePath": "category.$categoryId.tsx"
+    },
+    "/scene/$sceneId": {
+      "filePath": "scene.$sceneId.tsx"
+    },
+    "/scenes/$sceneId": {
+      "filePath": "scenes.$sceneId.tsx"
     }
   }
 }

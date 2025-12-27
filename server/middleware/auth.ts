@@ -6,10 +6,12 @@ export default defineEventHandler(async (event) => {
   if (!url.pathname.startsWith("/api")) return
   if (["JWT_SECRET", "G_CLIENT_ID", "G_CLIENT_SECRET"].find(k => !process.env[k])) {
     event.context.disabledLogin = true
-    if (["/api/s", "/api/proxy", "/api/latest", "/api/mcp"].every(p => !url.pathname.startsWith(p)))
+    // Allow public APIs without auth
+    if (["/api/init", "/api/login", "/api/oauth"].every(p => !url.pathname.startsWith(p)))
       throw createError({ statusCode: 506, message: "Server not configured, disable login" })
   } else {
-    if (["/api/s", "/api/me"].find(p => url.pathname.startsWith(p))) {
+    // Protected API routes that require authentication
+    if (["/api/orders", "/api/templates", "/api/me", "/api/volcengine"].find(p => url.pathname.startsWith(p))) {
       const token = getHeader(event, "Authorization")?.replace(/Bearer\s*/, "")?.trim()
       if (token) {
         try {
@@ -18,6 +20,7 @@ export default defineEventHandler(async (event) => {
             event.context.user = {
               id: payload.id,
               type: payload.type,
+              role: "photographer", // Default role, can be loaded from database
             }
           }
         } catch {

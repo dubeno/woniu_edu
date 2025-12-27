@@ -1,0 +1,1358 @@
+{
+  "scenes": [
+    {
+      "id": "smart-erase",
+      "name": "智能消除/保留",
+      "description": "精准移除或保留指定对象",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🧼",
+      "page": {
+        "title": "智能消除与保留",
+        "subtitle": "AI精准控制画面元素",
+        "features": [
+          "🧼 智能消除",
+          "🎯 指定保留",
+          "💰 14.9元起"
+        ],
+        "uploadText": "上传需要处理的图片",
+        "uploadHint": "支持复杂背景下的人物/物体处理",
+        "processingText": "AI 智能处理中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "智能图像编辑。根据指令精准移除画面中的干扰元素（如路人、杂物），或只保留指定区域的内容（如“只保留绿线内的人物”）。最大化保持原图的人脸、光影、色调和背景细节，修复区域自然无痕",
+        "user_prompt_placeholder": "例如：移除背景中的路人，只保留中间穿红衣服的女孩",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 7.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1490,
+        "currency": "CNY",
+        "display": "14.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "time-conversion",
+      "name": "昼夜/季节变换",
+      "description": "一键转换时间与季节",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🌗",
+      "page": {
+        "title": "昼夜与季节 AI 变换",
+        "subtitle": "改变光影，重塑氛围",
+        "features": [
+          "🌗 昼夜交替",
+          "🍂 四季流转",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传风景或建筑照片",
+        "processingText": "AI 变换场景中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "保持原图的构图和主体结构不变，改变画面的时间和天气属性。例如将白天变为黑夜（增加灯光、星空），将夏天变为冬天（增加积雪、枯树）。光影调整自然真实，氛围感强",
+        "user_prompt_placeholder": "例如：将白天变为繁星点点的黑夜，建筑亮起暖光",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "text-style-transfer",
+      "name": "文字风格化",
+      "description": "英文转中文，手写体设计",
+      "category": "design",
+      "enabled": true,
+      "icon": "✍️",
+      "page": {
+        "title": "文字风格 AI 转换",
+        "subtitle": "图像内文字的智能重绘",
+        "features": [
+          "✍️ 手写体生成",
+          "🔤 语言转换",
+          "💰 14.9元起"
+        ],
+        "uploadText": "上传包含文字的图片",
+        "processingText": "AI 文字重绘中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "图像内文字编辑与风格化。将图片中的指定文字内容进行修改、翻译或风格转换（如英文转中文手写体）。保持文字与背景的融合度，光影透视自然，字体风格符合画面整体调性",
+        "user_prompt_placeholder": "例如：将图片中的英文 'Hello' 改为手写体中文 '你好'",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1490,
+        "currency": "CNY",
+        "display": "14.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "group-photo",
+      "name": "多人合照生成",
+      "description": "多个角色合成完美合影",
+      "category": "portrait",
+      "enabled": true,
+      "icon": "👥",
+      "page": {
+        "title": "多人合照 AI 生成",
+        "subtitle": "无违和感的群像创作",
+        "features": [
+          "👥 多人融合",
+          "📸 自然互动",
+          "💰 29.9元起"
+        ],
+        "uploadText": "上传多张单人/参考图",
+        "uploadHint": "最多支持9张参考图",
+        "processingText": "AI 合成合照中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "多人合照生成。根据提供的多张角色参考图，生成一张无违和感的群像大合照。确保每个角色的面部特征与参考图一致，人物之间的站位、互动自然，光影统一，背景协调",
+        "user_prompt_placeholder": "例如：所有角色在草地上野餐，开心地看着镜头",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2990,
+        "currency": "CNY",
+        "display": "29.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "product-detail-page",
+      "name": "产品详情页",
+      "description": "电商详情页排版设计",
+      "category": "ecommerce",
+      "enabled": true,
+      "icon": "📑",
+      "page": {
+        "title": "产品详情页 AI 设计",
+        "subtitle": "高转化率的电商详情页",
+        "features": [
+          "📑 专业排版",
+          "✨ 卖点突出",
+          "💰 39.9元起"
+        ],
+        "uploadText": "上传产品主图",
+        "processingText": "AI 设计详情页中...",
+        "customFields": [
+          { "key": "product_name", "label": "产品名称", "type": "text", "required": true, "placeholder": "例如：高级香薰" },
+          { "key": "selling_points", "label": "核心卖点", "type": "textarea", "required": true, "placeholder": "例如：天然植萃，舒缓助眠，留香持久" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计电商产品详情页。风格高级、排版专业。突出产品质感，结合核心卖点进行视觉呈现。包含产品展示区、卖点说明区、场景应用区。色彩搭配符合产品调性",
+        "user_prompt_placeholder": "例如：高级香薰，极简风，自然光影，高端质感",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。产品：「{product_name}」，卖点：{selling_points}",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 3990,
+        "currency": "CNY",
+        "display": "39.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "art-exhibition-poster",
+      "name": "艺术展海报",
+      "description": "极简风艺术展览海报",
+      "category": "design",
+      "enabled": true,
+      "icon": "🖼️",
+      "page": {
+        "title": "艺术展海报 AI 设计",
+        "subtitle": "极简美学，艺术感拉满",
+        "features": [
+          "🖼️ 艺术风格",
+          "🎨 极简排版",
+          "💰 24.9元起"
+        ],
+        "uploadText": "可选：上传艺术品/展品图",
+        "processingText": "AI 设计海报中...",
+        "customFields": [
+          { "key": "exhibition_title", "label": "展览标题", "type": "text", "required": true, "placeholder": "例如：无声的对白" },
+          { "key": "exhibition_info", "label": "展览信息", "type": "text", "required": false, "placeholder": "例如：2025.10.01 - 北京798" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计极简风格的艺术展宣传海报。构图留白，突出艺术氛围。字体选用现代无衬线体或艺术字体，排版精致。色彩克制高雅",
+        "user_prompt_placeholder": "例如：黑白灰主色调，抽象几何元素，极简主义",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。标题：「{exhibition_title}」，信息：「{exhibition_info}」",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 2490,
+        "currency": "CNY",
+        "display": "24.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "wedding-invitation",
+      "name": "婚礼邀请函",
+      "description": "唯美浪漫的电子请柬",
+      "category": "lifestyle",
+      "enabled": true,
+      "icon": "💌",
+      "page": {
+        "title": "婚礼邀请函 AI 设计",
+        "subtitle": "传递幸福的浪漫邀约",
+        "features": [
+          "💌 唯美浪漫",
+          "💍 专属定制",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传婚纱照（可选）",
+        "processingText": "AI 设计请柬中...",
+        "customFields": [
+          { "key": "couple_names", "label": "新人姓名", "type": "text", "required": true, "placeholder": "例如：李雷 & 韩梅梅" },
+          { "key": "wedding_date", "label": "婚礼日期", "type": "text", "required": true, "placeholder": "例如：2025年5月20日" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计唯美浪漫的婚礼邀请函。风格典雅，使用花卉、蕾丝、丝带等元素装饰。字体优美流畅（手写体或衬线体）。色彩柔和（粉色、香槟色、白色）。整体氛围幸福甜蜜",
+        "user_prompt_placeholder": "例如：森系风格，水彩花卉，清新自然",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。新人：「{couple_names}」，日期：「{wedding_date}」",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "meme-enhancement",
+      "name": "表情包二创",
+      "description": "模糊表情包高清+换装",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🤪",
+      "page": {
+        "title": "表情包 AI 二创",
+        "subtitle": "高清修复 + 趣味换装",
+        "features": [
+          "🤪 趣味二创",
+          "✨ 高清重绘",
+          "💰 9.9元起"
+        ],
+        "uploadText": "上传表情包",
+        "processingText": "AI 表情包重绘中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "表情包高清重绘与二创。保持原表情包的角色神态和动作，将其重绘为高清图像。根据指令更改角色的服装、配饰或背景，保持画风和谐有趣",
+        "user_prompt_placeholder": "例如：让蒜鸟穿上蓬蓬公主裙泳衣",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 7.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 990,
+        "currency": "CNY",
+        "display": "9.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "silhouette-to-character",
+      "name": "剪影生成角色",
+      "description": "剪影细化为全彩角色",
+      "category": "creative",
+      "enabled": true,
+      "icon": "👤",
+      "page": {
+        "title": "剪影 AI 角色生成",
+        "subtitle": "从轮廓到生动角色",
+        "features": [
+          "👤 剪影细化",
+          "🎨 全彩绘制",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传剪影图",
+        "processingText": "AI 角色绘制中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "将输入的剪影图像细化并绘制为全彩角色形象。根据剪影的轮廓推断或根据指令添加服饰细节、五官表情、材质质感与光影效果。生成高质量的角色插画",
+        "user_prompt_placeholder": "例如：赛博朋克风格战士，发光盔甲",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 7.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "old-photo-restoration",
+      "name": "老照片修复",
+      "description": "让珍贵的回忆重现光彩",
+      "category": "restoration",
+      "enabled": true,
+      "icon": "📸",
+      "page": {
+        "title": "老照片 AI 修复",
+        "subtitle": "让珍贵的回忆重现光彩",
+        "features": [
+          "⚡ 10秒出图",
+          "✨ 效果惊艳",
+          "💰 29.9元起"
+        ],
+        "uploadText": "拖拽或点击上传老照片",
+        "uploadHint": "支持 JPG、PNG 格式，最大 10MB",
+        "processingText": "AI 修复中...",
+        "comparisonLabels": {
+          "before": "原图",
+          "after": "修复后"
+        },
+        "stats": {
+          "processed": "10,000+",
+          "rating": "4.9分",
+          "speed": "10秒"
+        }
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "提升清晰度和细节，去除划痕、污渍和噪点，修复破损和褪色部分，优化色彩、对比度和曝光，保持自然真实的效果。将参考图的黑白老照片进行高清上色和修复，使其更清晰自然。",
+        "user_prompt_placeholder": "例如：让照片更清晰，色彩更鲜艳",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false,
+        "negative_prompt": "模糊、失真、低质量、噪点过多"
+      },
+      "pricing": {
+        "base_price": 2990,
+        "currency": "CNY",
+        "display": "29.9",
+        "unit": "元/张",
+        "discount": null
+      },
+      "business": {
+        "cost_per_call": 4,
+        "target_margin": 99,
+        "estimated_time": "10秒"
+      }
+    },
+    {
+      "id": "photo-colorization",
+      "name": "黑白照片上色",
+      "description": "为黑白照片赋予真实色彩",
+      "category": "colorization",
+      "enabled": true,
+      "icon": "🎨",
+      "page": {
+        "title": "黑白照片 AI 上色",
+        "subtitle": "为黑白照片赋予真实色彩",
+        "features": [
+          "🎨 智能上色",
+          "🌈 色彩自然",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传黑白照片",
+        "uploadHint": "支持 JPG、PNG 格式",
+        "processingText": "AI 上色中...",
+        "comparisonLabels": {
+          "before": "黑白原图",
+          "after": "彩色效果"
+        }
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "为黑白照片添加真实自然的色彩，保持人物肤色自然，服装色彩协调，环境色调合理，避免过度饱和，整体风格真实可信",
+        "user_prompt_placeholder": "例如：暖色调，年代感",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "portrait-enhancement",
+      "name": "证件照优化",
+      "description": "专业证件照质检与美化",
+      "category": "professional",
+      "enabled": true,
+      "icon": "👔",
+      "page": {
+        "title": "证件照 AI 优化",
+        "subtitle": "符合规范的专业证件照",
+        "features": [
+          "✓ 规范检测",
+          "✓ 智能美化",
+          "💰 9.9元起"
+        ],
+        "uploadText": "上传证件照",
+        "uploadHint": "支持各类证件照规格",
+        "processingText": "AI 优化中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "优化证件照质量，保持五官自然真实，轻微美化肤色和细节，去除瑕疵，符合证件照规范要求，避免过度修饰",
+        "user_prompt_placeholder": "例如：专业商务风格",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 4.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 990,
+        "currency": "CNY",
+        "display": "9.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "commercial-photography",
+      "name": "商业摄影精修",
+      "description": "4K超清产品细节展示",
+      "category": "commercial",
+      "enabled": true,
+      "icon": "💎",
+      "page": {
+        "title": "商业摄影 AI 精修",
+        "subtitle": "打造4K级广告大片",
+        "features": [
+          "💎 极致细节",
+          "✨ 商业质感",
+          "💰 39.9元起"
+        ],
+        "uploadText": "上传产品原图",
+        "processingText": "AI 精修中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "商业级摄影精修，生成超高清4K分辨率图像。微距特写风格，强调材质质感（如拉丝金属、皮革纹理），光影效果专业（柔光灯、轮廓光），背景干净高级，色彩准确，具有顶级杂志封面的美学风格",
+        "user_prompt_placeholder": "例如：顶级奢侈品腕表特写，深邃星空蓝表盘，水珠质感",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.5,
+        "size": "4K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 3990,
+        "currency": "CNY",
+        "display": "39.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "ecommerce-outfit-change",
+      "name": "电商快速换装",
+      "description": "多图合成，一键换装展示",
+      "category": "ecommerce",
+      "enabled": true,
+      "icon": "👗",
+      "page": {
+        "title": "电商换装 AI 合成",
+        "subtitle": "多图融合，一键生成商品展示图",
+        "features": [
+          "👗 一键换装",
+          "🎨 多图融合",
+          "💰 9.9元起"
+        ],
+        "uploadText": "上传模特照 + 服装图",
+        "uploadHint": "支持上传多张参考图",
+        "processingText": "AI 合成中...",
+        "comparisonLabels": {
+          "before": "原图",
+          "after": "合成后"
+        }
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "电商专业换装生成。给模特换上参考图中的服装（连衣裙/风衣/鞋子），确保衣物合身自然，展现真实的材质和褶皱。背景为纯白色影棚风格或指定场景，生成一张高质量的全身商品展示图",
+        "user_prompt_placeholder": "例如：给图一模特换上图二的连衣裙，白色背景",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 990,
+        "currency": "CNY",
+        "display": "9.9",
+        "unit": "元/张"
+      },
+      "business": {
+        "cost_per_call": 4,
+        "target_margin": 99,
+        "estimated_time": "15秒"
+      }
+    },
+    {
+      "id": "product-scene-composition",
+      "name": "商品场景合成",
+      "description": "商品 + 场景，打造氛围感",
+      "category": "ecommerce",
+      "enabled": true,
+      "icon": "📦",
+      "page": {
+        "title": "商品场景 AI 合成",
+        "subtitle": "将商品融入理想场景",
+        "features": [
+          "📦 商品融合",
+          "🏠 场景氛围",
+          "💰 14.9元起"
+        ],
+        "uploadText": "上传商品图 + 场景参考图",
+        "processingText": "AI 场景合成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "prompt": "将商品自然融入到场景中，保持商品的真实质感和细节，调整光影使其与场景协调统一，营造真实的使用氛围，突出商品特点，画面美观专业",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 1490,
+        "currency": "CNY",
+        "display": "14.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "person-outfit-reference",
+      "name": "人物穿搭体验",
+      "description": "保持人物特征，体验不同穿搭",
+      "category": "portrait",
+      "enabled": true,
+      "icon": "🎭",
+      "page": {
+        "title": "人物穿搭 AI 体验",
+        "subtitle": "保持人物一致性的穿搭展示",
+        "features": [
+          "🎭 人物一致",
+          "👔 风格多变",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传人物照 + 服装参考图",
+        "processingText": "AI 穿搭生成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "保持参考图中人物的面孔、气质和基本形象高度统一（主体一致性）。让人物穿着指定的服装（或参考图服装），出现在描述的场景中。适用于日常穿搭分享、证件照、旅行日记等",
+        "user_prompt_placeholder": "例如：穿着米色针织衫，坐在咖啡馆窗边，面带微笑",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "home-design-style-transfer",
+      "name": "家居设计风格迁移",
+      "description": "参考风格，重新设计空间",
+      "category": "design",
+      "enabled": true,
+      "icon": "🏠",
+      "page": {
+        "title": "家居设计 AI 风格迁移",
+        "subtitle": "根据参考图重新设计你的空间",
+        "features": [
+          "🏠 空间设计",
+          "🎨 风格迁移",
+          "💰 29.9元起"
+        ],
+        "uploadText": "上传空间照 + 风格参考图",
+        "processingText": "AI 设计生成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "prompt": "根据风格参考图的装修风格、色调搭配、材质质感，重新设计空间，保持空间的基本布局结构，改变墙面色彩、家具样式、装饰元素，创造出风格统一、美观实用的室内设计效果",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2990,
+        "currency": "CNY",
+        "display": "29.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "character-consistency-series",
+      "name": "角色一致性绘本",
+      "description": "一个角色，生成系列故事",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🎬",
+      "page": {
+        "title": "角色一致性 AI 绘本",
+        "subtitle": "保持角色特征的系列创作",
+        "features": [
+          "🎬 角色一致",
+          "🌟 连续故事",
+          "💰 24.9元起"
+        ],
+        "uploadText": "上传角色参考图",
+        "uploadHint": "可生成多个不同场景",
+        "processingText": "AI 绘本生成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "严格保持参考图中角色的核心特征（面部、服装、体型）完全一致。生成连贯的趣味故事插画。无论动作、表情和场景如何变化，角色的辨识度保持不变。风格可为卡通绘本风格",
+        "user_prompt_placeholder": "例如：角色站在月球表面，好奇地看着远方的地球",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 7.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2490,
+        "currency": "CNY",
+        "display": "24.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "style-transfer-art",
+      "name": "艺术风格转换",
+      "description": "照片转艺术作品",
+      "category": "art",
+      "enabled": true,
+      "icon": "🎨",
+      "page": {
+        "title": "艺术风格 AI 转换",
+        "subtitle": "将照片转换为各种艺术风格",
+        "features": [
+          "🎨 风格多样",
+          "🖼️ 艺术品质",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传照片 + 风格参考图",
+        "processingText": "AI 艺术转换中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "prompt": "保持照片的主体构图和核心元素，参考风格图的艺术表现手法、笔触特点、色彩运用、光影处理，将照片转换为具有相应艺术风格的作品，可以是油画、水彩、素描、版画等各种艺术形式。例如：将城市景观转化为《盗梦空间》折叠城市效果",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "ip-poster-design",
+      "name": "IP形象海报制作",
+      "description": "背景+主体+文字，专业海报生成",
+      "category": "social-media",
+      "enabled": true,
+      "icon": "🎨",
+      "page": {
+        "title": "IP形象海报 AI 设计",
+        "subtitle": "品牌级海报，一站式生成",
+        "features": [
+          "🎨 专业设计",
+          "🇨🇳 完美中文",
+          "💰 39.9元起"
+        ],
+        "uploadText": "上传背景图和IP形象",
+        "uploadHint": "主图=背景图，参考图1=IP形象/主体",
+        "processingText": "AI 海报设计中...",
+        "customFields": [
+          { "key": "main_title", "label": "主标题", "type": "text", "required": true, "placeholder": "例如：东方节奏" },
+          { "key": "subtitle", "label": "副标题", "type": "text", "required": false, "placeholder": "例如：9月25日 · 未来科技城" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计专业的IP形象海报作品，将主体图（IP形象）自然融入背景场景，确保主体清晰突出，光影协调统一，构图美观专业。理解复杂的排版指令",
+        "user_prompt_placeholder": "例如：国潮风格，机械仙鹤，赛博朋克线条",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。海报包含醒目的毛笔书法主标题：「{main_title}」，副标题：「{subtitle}」，文字排版美观易读，与整体设计风格协调",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 3990,
+        "currency": "CNY",
+        "display": "39.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "xiaohongshu-cover",
+      "name": "小红书封面图",
+      "description": "吸睛封面，提升点击率",
+      "category": "social-media",
+      "enabled": true,
+      "icon": "📱",
+      "page": {
+        "title": "小红书封面 AI 设计",
+        "subtitle": "3秒吸引眼球的爆款封面",
+        "features": [
+          "📱 高点击率",
+          "✨ 视觉吸睛",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传人物/产品图",
+        "uploadHint": "支持JPG、PNG格式",
+        "processingText": "AI 封面设计中...",
+        "customFields": [
+          { "key": "title_text", "label": "封面标题", "type": "text", "required": true, "placeholder": "请输入封面标题文字" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计吸引眼球的小红书封面图，色彩鲜明饱和，主体突出清晰，竖版9:16比例，背景简洁不抢主体，整体风格年轻时尚",
+        "user_prompt_placeholder": "例如：可爱风格，粉色系，加爱心装饰",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。封面包含醒目的中文标题：「{title_text}」，字体大而清晰，位于画面上方",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "wechat-article-cover",
+      "name": "公众号封面图",
+      "description": "专业公众号头图设计",
+      "category": "social-media",
+      "enabled": true,
+      "icon": "📰",
+      "page": {
+        "title": "公众号封面 AI 设计",
+        "subtitle": "符合微信规范的专业头图",
+        "features": [
+          "📰 专业设计",
+          "📐 标准尺寸",
+          "💰 24.9元起"
+        ],
+        "uploadText": "上传背景图或主体图",
+        "uploadHint": "建议横版图片",
+        "processingText": "AI 头图设计中...",
+        "customFields": [
+          { "key": "title_text", "label": "文章标题", "type": "text", "required": true, "placeholder": "请输入文章标题" },
+          { "key": "subtitle_text", "label": "副标题", "type": "text", "required": false, "placeholder": "可选副标题" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计专业的微信公众号封面图，比例2.35:1横版，主视觉清晰，信息层次分明，色彩搭配专业，符合公众号阅读场景",
+        "user_prompt_placeholder": "例如：科技感，蓝色渐变背景",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。封面包含清晰的标题文字：「{title_text}」，副标题：「{subtitle_text}」，字体醒目专业，排版美观",
+        "guidance_scale": 5.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 2490,
+        "currency": "CNY",
+        "display": "24.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "product-showcase-poster",
+      "name": "产品宣传海报",
+      "description": "电商/朋友圈营销海报",
+      "category": "social-media",
+      "enabled": true,
+      "icon": "🛍️",
+      "page": {
+        "title": "产品海报 AI 设计",
+        "subtitle": "让你的产品脱颖而出",
+        "features": [
+          "🛍️ 突出产品",
+          "🎯 营销力强",
+          "💰 29.9元起"
+        ],
+        "uploadText": "上传产品图",
+        "uploadHint": "建议白底或透明背景",
+        "processingText": "AI 海报设计中...",
+        "customFields": [
+          { "key": "product_name", "label": "产品名称", "type": "text", "required": true, "placeholder": "请输入产品名称" },
+          { "key": "slogan", "label": "宣传语", "type": "text", "required": false, "placeholder": "可选宣传语" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计吸引人的产品宣传海报，产品主体清晰突出，背景烘托氛围但不抢主体，光影专业，色彩搭配符合产品调性，整体具有商业美感和营销吸引力",
+        "user_prompt_placeholder": "例如：简约风格，白色背景，柔光效果",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。海报包含产品名称：「{product_name}」，宣传语：「{slogan}」，文字清晰醒目",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 2990,
+        "currency": "CNY",
+        "display": "29.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "knowledge-card",
+      "name": "科普知识卡片",
+      "description": "教育/科普内容可视化",
+      "category": "social-media",
+      "enabled": true,
+      "icon": "📚",
+      "page": {
+        "title": "知识卡片 AI 设计",
+        "subtitle": "让知识更易传播",
+        "features": [
+          "📚 信息可视化",
+          "🎨 设计专业",
+          "💰 14.9元起"
+        ],
+        "uploadText": "可选：上传配图素材",
+        "uploadHint": "可纯文字生成，也可上传配图",
+        "processingText": "AI 卡片设计中...",
+        "customFields": [
+          { "key": "topic", "label": "主题", "type": "text", "required": true, "placeholder": "例如：光合作用" },
+          { "key": "key_points", "label": "要点", "type": "textarea", "required": true, "placeholder": "请输入要点内容（逗号分隔）" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计清晰易读的科普知识卡片，信息层次分明，整体设计如同一片展开的叶子或卡片。使用图标和插图辅助理解，色彩舒适护眼（如生命绿、阳光黄），排版科学合理。标题醒目，包含核心定义、反应原料、产出成果等板块",
+        "user_prompt_placeholder": "例如：光合作用，自然有机风格",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。主标题：「{topic}」，包含核心板块：{key_points}",
+        "guidance_scale": 5.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1490,
+        "currency": "CNY",
+        "display": "14.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "food-advertising",
+      "name": "美食广告创意",
+      "description": "超现实美食合成，创意广告",
+      "category": "food",
+      "enabled": true,
+      "icon": "🍔",
+      "page": {
+        "title": "美食广告 AI 创意设计",
+        "subtitle": "创造现实中无法拍摄的视觉效果",
+        "features": [
+          "🍔 创意合成",
+          "✨ 超现实",
+          "💰 34.9元起"
+        ],
+        "uploadText": "上传食材/产品图（最多5张）",
+        "uploadHint": "可上传多张素材图进行创意合成",
+        "processingText": "AI 创意合成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "创作超现实的美食广告图（幻想融合）。将多种食材和元素进行创意融合（如：巧克力像熔岩一样流淌），突出产品特点，质感细腻真实，构图富有想象力，光影专业，色彩诱人，整体具有强烈的视觉冲击力和食欲感染力。采用专业美食摄影的布光",
+        "user_prompt_placeholder": "例如：将牛角包从中间切开，巧克力流淌出来，点缀蓝莓",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 3490,
+        "currency": "CNY",
+        "display": "34.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "instruction-manual",
+      "name": "产品说明书设计",
+      "description": "清晰易懂的使用指南",
+      "category": "education",
+      "enabled": true,
+      "icon": "📋",
+      "page": {
+        "title": "产品说明书 AI 设计",
+        "subtitle": "专业排版，信息清晰",
+        "features": [
+          "📋 专业排版",
+          "📱 移动友好",
+          "💰 39.9元起"
+        ],
+        "uploadText": "可选：上传产品图",
+        "uploadHint": "可纯文字生成，也可配图",
+        "processingText": "AI 设计中...",
+        "customFields": [
+          { "key": "product_name", "label": "产品名称", "type": "text", "required": true, "placeholder": "例如：滴漏式咖啡机" },
+          { "key": "manual_title", "label": "说明书标题", "type": "text", "required": true, "placeholder": "例如：快速入门指南" },
+          { "key": "manual_content", "label": "说明书内容", "type": "textarea", "required": true, "placeholder": "请输入操作步骤、准备工作等（可使用Markdown格式）" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计专业的产品使用说明书（长图形式）。信息层次分明，包含准备工作、操作步骤、清洁保养、安全提示等模块。使用线性图标和图示辅助理解，步骤编号清晰，色彩搭配专业舒适（如咖啡棕、奶油白），排版科学合理，适合手机屏幕阅读",
+        "user_prompt_placeholder": "例如：滴漏式咖啡机，干净现代风格",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。主标题：「{manual_title}」，产品：「{product_name}」。内容包含：{manual_content}",
+        "guidance_scale": 5.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 3990,
+        "currency": "CNY",
+        "display": "39.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "city-postcard",
+      "name": "城市明信片",
+      "description": "地标剪影，文旅宣传",
+      "category": "travel",
+      "enabled": true,
+      "icon": "🏙️",
+      "page": {
+        "title": "城市明信片 AI 设计",
+        "subtitle": "打造城市名片，赋能文旅宣传",
+        "features": [
+          "🏙️ 地标剪影",
+          "🌅 黄昏氛围",
+          "💰 19.9元起"
+        ],
+        "uploadText": "可选：上传城市/地标照片",
+        "uploadHint": "也可纯文字生成",
+        "processingText": "AI 设计中...",
+        "customFields": [
+          { "key": "city_name", "label": "城市名称", "type": "text", "required": true, "placeholder": "例如：上海、北京、成都" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计城市地标剪影主题明信片，横版构图（1800x1200px）。扁平化插画风格，色彩层次分明。核心元素是城市最著名的地标建筑群形成的剪影，背景是绚烂的日落或日出天空（橙色、紫色、粉色渐变），地标剪影为深蓝色或黑色，充满艺术感",
+        "user_prompt_placeholder": "例如：黄昏时分，温暖色调，浪漫氛围",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。城市名称「{city_name}」以优雅的、现代感的手写体艺术字，巨大地叠加在天空背景上，形成视觉焦点",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "zodiac-wallpaper",
+      "name": "星座壁纸生成",
+      "description": "梦幻唯美，十二星座专属",
+      "category": "lifestyle",
+      "enabled": true,
+      "icon": "♈",
+      "page": {
+        "title": "星座壁纸 AI 设计",
+        "subtitle": "专属星座守护神壁纸",
+        "features": [
+          "♈ 十二星座",
+          "✨ 梦幻唯美",
+          "💰 19.9元起"
+        ],
+        "uploadText": "无需上传图片",
+        "uploadHint": "AI将根据星座自动生成",
+        "processingText": "AI 绘制中...",
+        "customFields": [
+          { "key": "zodiac_name", "label": "星座名称", "type": "text", "required": true, "placeholder": "例如：白羊座、金牛座..." }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "创作唯美梦幻的星座壁纸，竖版比例（9:16），适合手机壁纸。将星座的象征（如白羊座的公羊，狮子座的雄狮，双鱼座的双鱼）艺术化、神话化，置于璀璨的星空背景下，带有发光粒子和星尘效果。色彩以深邃的藏蓝、星空紫为主，点缀金色的星光",
+        "user_prompt_placeholder": "例如：金色星光，神秘氛围",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。星座名称「{zodiac_name}」以优雅的衬线字体，小而精致地放在底部中央",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "creative-element-replacement",
+      "name": "创意元素替换",
+      "description": "材质替换、风格转换",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🎭",
+      "page": {
+        "title": "创意元素替换 AI",
+        "subtitle": "突破现实的想象力",
+        "features": [
+          "🎭 创意无限",
+          "✨ 超现实",
+          "💰 24.9元起"
+        ],
+        "uploadText": "上传原图和参考素材",
+        "uploadHint": "主图=要修改的图，参考图=素材/风格",
+        "processingText": "AI 创意处理中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "进行创意的元素替换和材质转换，保持原图的主体构图和基本形态。将指定元素替换为全新的材质、颜色或形态（例如：将马的身体替换为蓝色闪电，保持马的轮廓），创造超现实的视觉效果，细节真实可信，整体富有想象力",
+        "user_prompt_placeholder": "例如：保持宇航员头盔主体不变，面罩反射侏罗纪丛林",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。确保替换后的元素与整体画面协调统一",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2490,
+        "currency": "CNY",
+        "display": "24.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "festival-greeting-card",
+      "name": "节日祝福卡片",
+      "description": "春节、中秋、圣诞祝福",
+      "category": "lifestyle",
+      "enabled": true,
+      "icon": "🎉",
+      "page": {
+        "title": "节日祝福卡片 AI 设计",
+        "subtitle": "温暖的祝福，精美的设计",
+        "features": [
+          "🎉 节日氛围",
+          "💌 温馨祝福",
+          "💰 14.9元起"
+        ],
+        "uploadText": "可选：上传照片或素材",
+        "uploadHint": "也可纯文字生成",
+        "processingText": "AI 设计中...",
+        "customFields": [
+          { "key": "festival_name", "label": "节日名称", "type": "text", "required": true, "placeholder": "例如：春节、中秋节、圣诞节" },
+          { "key": "greeting_text", "label": "祝福语", "type": "text", "required": true, "placeholder": "例如：新年快乐，万事如意" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计温馨的节日祝福卡片，色彩符合节日氛围，融入节日元素和装饰，排版美观温馨，文字清晰易读，整体充满喜庆和祝福的感觉",
+        "user_prompt_placeholder": "例如：中国风，红色金色，喜庆氛围",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。节日：「{festival_name}」，祝福语：「{greeting_text}」",
+        "guidance_scale": 5.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 1490,
+        "currency": "CNY",
+        "display": "14.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "menu-design",
+      "name": "餐厅菜单设计",
+      "description": "专业菜单排版设计",
+      "category": "food",
+      "enabled": true,
+      "icon": "📖",
+      "page": {
+        "title": "餐厅菜单 AI 设计",
+        "subtitle": "提升餐厅形象的专业菜单",
+        "features": [
+          "📖 专业排版",
+          "🍽️ 美食摄影感",
+          "💰 49.9元起"
+        ],
+        "uploadText": "上传菜品图片",
+        "uploadHint": "可上传多张菜品图",
+        "processingText": "AI 设计中...",
+        "customFields": [
+          { "key": "restaurant_name", "label": "餐厅名称", "type": "text", "required": true, "placeholder": "例如：江南小厨" },
+          { "key": "menu_items", "label": "菜单内容", "type": "textarea", "required": true, "placeholder": "请输入菜品名称和价格（每行一个）" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "设计专业的餐厅菜单，排版清晰美观，信息层次分明，菜品图片诱人，色彩搭配符合餐饮氛围，字体易读，价格标注清晰，整体设计既有专业感又能激发食欲",
+        "user_prompt_placeholder": "例如：中式风格，暖色调，古典花纹装饰",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。餐厅：「{restaurant_name}」，菜单：{menu_items}",
+        "guidance_scale": 5.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 4990,
+        "currency": "CNY",
+        "display": "49.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "action-figure",
+      "name": "万物皆可手办",
+      "description": "生成高品质3D手办模型",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🧸",
+      "page": {
+        "title": "商业手办 AI 生成",
+        "subtitle": "万物皆可手办化",
+        "features": [
+          "🧸 3D质感",
+          "✨ 商业模型",
+          "💰 24.9元起"
+        ],
+        "uploadText": "上传角色/物体图",
+        "processingText": "AI 建模生成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "将人物或物体转换为高品质的商业手办模型（Blind Box / PVC Figure）。风格为3D渲染，材质为PVC或树脂，具有光泽感和细腻的质感。背景为干净的展示台或配套的场景包装。保持角色的核心特征，但将其风格化为手办比例（如Q版或1/7比例）。",
+        "user_prompt_placeholder": "例如：赛博朋克风格，发光底座，精致细节",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 7.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2490,
+        "currency": "CNY",
+        "display": "24.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "product-structure",
+      "name": "产品结构分解",
+      "description": "工业级产品爆炸图",
+      "category": "commercial",
+      "enabled": true,
+      "icon": "⚙️",
+      "page": {
+        "title": "产品结构 AI 分解",
+        "subtitle": "展现精密工业美学",
+        "features": [
+          "⚙️ 爆炸视图",
+          "📐 精密结构",
+          "💰 39.9元起"
+        ],
+        "uploadText": "上传产品外观图",
+        "processingText": "AI 结构解析中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "生成产品的超详细分解图（Exploded View）。展示产品的内部结构、零件构成和装配关系。金属部件和电子元件悬浮在空中，完美对齐，展现工业美学。风格为未来科技感，8K分辨率，柔和的演播室灯光，高度逼真。",
+        "user_prompt_placeholder": "例如：智能手机分解图，芯片悬浮，精密电路",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.5,
+        "size": "4K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 3990,
+        "currency": "CNY",
+        "display": "39.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "ai-storyboard",
+      "name": "AI 影视分镜",
+      "description": "剧本一键生成分镜",
+      "category": "creative",
+      "enabled": true,
+      "icon": "🎬",
+      "page": {
+        "title": "AI 影视分镜生成",
+        "subtitle": "从剧本到画面，一键直出",
+        "features": [
+          "🎬 电影感",
+          "📝 剧本还原",
+          "💰 29.9元起"
+        ],
+        "uploadText": "可选：上传角色设定图",
+        "processingText": "AI 分镜绘制中...",
+        "customFields": [
+          { "key": "script_content", "label": "分镜描述/剧本", "type": "textarea", "required": true, "placeholder": "例如：主角站在山顶，俯瞰云海，背影孤寂" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "影视/动漫分镜脚本生成。根据参考图和剧情描述，生成一系列连续的镜头画面。保持画风统一，人物形象一致。构图专业，富有电影感（如特写、广角、过肩镜头等）。",
+        "user_prompt_placeholder": "例如：仙侠剧情，主角在山顶练剑，云雾缭绕",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。剧情描述：「{script_content}」",
+        "guidance_scale": 6.5,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 2990,
+        "currency": "CNY",
+        "display": "29.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "photo-booth",
+      "name": "趣味大头贴",
+      "description": "四宫格表情包生成",
+      "category": "portrait",
+      "enabled": true,
+      "icon": "📸",
+      "page": {
+        "title": "趣味大头贴 AI 生成",
+        "subtitle": "四宫格连拍，表情更生动",
+        "features": [
+          "📸 四宫格",
+          "🤪 搞怪表情",
+          "💰 9.9元起"
+        ],
+        "uploadText": "上传人物照片",
+        "processingText": "AI 大头贴生成中..."
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "生成大头贴四宫格（Photo Booth）。在一个画面中包含四张不同表情或动作的照片。风格轻松可爱，带有边框和装饰贴纸。人物表情生动夸张，动作各异，色彩鲜艳。",
+        "user_prompt_placeholder": "例如：可爱搞怪表情，粉色边框，心形贴纸",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false
+      },
+      "pricing": {
+        "base_price": 990,
+        "currency": "CNY",
+        "display": "9.9",
+        "unit": "元/张"
+      }
+    },
+    {
+      "id": "merchandise-mockup",
+      "name": "周边产品设计",
+      "description": "IP周边效果图展示",
+      "category": "commercial",
+      "enabled": true,
+      "icon": "🛍️",
+      "page": {
+        "title": "周边产品 AI 设计",
+        "subtitle": "一键生成IP周边效果图",
+        "features": [
+          "🛍️ 真实质感",
+          "🎨 完美融合",
+          "💰 19.9元起"
+        ],
+        "uploadText": "上传设计图/IP形象",
+        "processingText": "AI 效果图生成中...",
+        "customFields": [
+           { "key": "product_type", "label": "产品类型", "type": "text", "required": true, "placeholder": "例如：帆布包、马克杯、T恤" }
+        ]
+      },
+      "ai": {
+        "model": "doubao-seedream-4-5-251128",
+        "system_prompt": "周边产品设计与展示。将参考图中的形象或图案，自然真实地印制在指定的周边产品上（如帆布包、T恤、马克杯、手机壳）。保持材质纹理真实，透视准确，光影自然，具有商业广告质感。",
+        "user_prompt_placeholder": "例如：印在米白色帆布包上，自然光影，文艺风格",
+        "prompt_merge_template": "{system_prompt}。{user_prompt}。产品类型：{product_type}",
+        "guidance_scale": 6.0,
+        "size": "2K",
+        "watermark": false,
+        "supports_multiple_images": true
+      },
+      "pricing": {
+        "base_price": 1990,
+        "currency": "CNY",
+        "display": "19.9",
+        "unit": "元/张"
+      }
+    }
+  ],
+  "meta": {
+    "version": "2.3.0",
+    "last_updated": "2025-12-07",
+    "default_scene": "old-photo-restoration"
+  },
+  "categories": [
+    { "id": "restoration", "name": "照片修复", "icon": "🔧", "description": "老照片修复、上色、增强" },
+    { "id": "portrait", "name": "人像处理", "icon": "👤", "description": "证件照、换装、美化" },
+    { "id": "commercial", "name": "商业摄影", "icon": "💎", "description": "4K精修、广告大片" },
+    { "id": "social-media", "name": "自媒体运营", "icon": "📱", "description": "小红书、公众号、海报设计" },
+    { "id": "ecommerce", "name": "电商设计", "icon": "🛒", "description": "商品展示、场景合成" },
+    { "id": "creative", "name": "创意设计", "icon": "🎨", "description": "IP创作、绘本、艺术风格" },
+    { "id": "design", "name": "平面设计", "icon": "✍️", "description": "海报、字体、排版设计" },
+    { "id": "food", "name": "美食广告", "icon": "🍔", "description": "菜单、广告、创意合成" },
+    { "id": "education", "name": "教育科普", "icon": "📚", "description": "知识卡片、说明书" },
+    { "id": "travel", "name": "文旅宣传", "icon": "✈️", "description": "城市明信片、旅游海报" },
+    { "id": "lifestyle", "name": "生活娱乐", "icon": "🌟", "description": "星座壁纸、节日祝福" }
+  ]
+}

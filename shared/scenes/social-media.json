@@ -1,0 +1,204 @@
+[
+  {
+    "id": "ip-poster",
+    "name": "IP海报生成",
+    "description": "品牌IP专属海报",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "🖼️",
+    "page": {
+      "title": "IP海报 AI 生成",
+      "subtitle": "打造品牌专属视觉",
+      "features": ["🖼️ 专属定制", "✨ 品牌调性", "💰 24.9元起"],
+      "uploadText": "上传IP形象 + 参考风格图",
+      "processingText": "AI 海报生成中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "使用上传的IP形象（Character）作为主角，结合参考图（Reference Style）的构图和风格，生成一张高质量的商业海报。保持IP形象的高度一致性（面部、服装、特征），完美融入新场景。风格需符合品牌调性，画面具有冲击力和设计感",
+      "user_prompt_placeholder": "例如：赛博朋克风格背景，IP人物在霓虹灯下",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2490,
+      "currency": "CNY",
+      "display": "24.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "xiaohongshu-cover",
+    "name": "小红书爆款封面",
+    "description": "高点击率笔记封面",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "📕",
+    "page": {
+      "title": "小红书封面 AI 设计",
+      "subtitle": "打造爆款笔记封面",
+      "features": ["📕 吸睛标题", "✨ 唯美滤镜", "💰 19.9元起"],
+      "uploadText": "上传主图",
+      "processingText": "AI 封面生成中...",
+      "customFields": [
+        { "key": "title_text", "label": "封面标题", "type": "text", "required": true, "placeholder": "例如：秋日穿搭指南" },
+        { "key": "subtitle_text", "label": "副标题", "type": "text", "required": false, "placeholder": "例如：温暖又显瘦" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成小红书风格的笔记封面。画面精致、色彩明亮、具有生活美学感。自动进行构图优化，留出标题文字区域。风格可以是ins风、奶油风、多巴胺风等流行趋势",
+      "user_prompt_placeholder": "例如：韩系奶油风，秋日氛围，温暖光影",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。主标题：「{title_text}」，副标题：「{subtitle_text}」",
+      "guidance_scale": 5.5,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "wechat-cover",
+    "name": "公众号首图",
+    "description": "大图模式推文封面",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "📱",
+    "page": {
+      "title": "公众号首图 AI 设计",
+      "subtitle": "提升点击率的推文封面",
+      "features": ["📱 尺寸适配", "✨ 视觉冲击", "💰 19.9元起"],
+      "uploadText": "上传主图素材",
+      "processingText": "AI 封面生成中...",
+      "customFields": [
+        { "key": "article_topic", "label": "文章主题", "type": "text", "required": true, "placeholder": "例如：职场进阶技巧" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成微信公众号推文首图（900x383 或 2.35:1）。画面简洁大气，主题突出，具有极强的视觉引导性。色彩搭配舒适，符合文章主题调性。避免文字过于密集，留白得当",
+      "user_prompt_placeholder": "例如：极简商务风，蓝色系，职场插画",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。文章主题：「{article_topic}」",
+      "guidance_scale": 5.5,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "video-cover",
+    "name": "视频封面定制",
+    "description": "B站/抖音视频封面",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "🎬",
+    "page": {
+      "title": "视频封面 AI 定制",
+      "subtitle": "高点击率视频封面",
+      "features": ["🎬 视觉焦点", "✨ 风格定制", "💰 19.9元起"],
+      "uploadText": "上传视频截图/素材",
+      "processingText": "AI 封面生成中...",
+      "customFields": [
+        { "key": "video_title", "label": "视频标题", "type": "text", "required": true, "placeholder": "例如：全网最全教程" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成视频平台（B站/YouTube/抖音）视频封面。画面具有强烈的视觉冲击力，人物表情夸张或特写，背景色彩鲜明。关键元素突出，构图紧凑。预留文字标题位置",
+      "user_prompt_placeholder": "例如：二次元风格，高饱和度，惊讶表情",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。标题：「{video_title}」",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "knowledge-card",
+    "name": "知识卡片生成",
+    "description": "金句/知识点卡片",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "📝",
+    "page": {
+      "title": "知识卡片 AI 生成",
+      "subtitle": "优雅呈现知识内容",
+      "features": ["📝 极简排版", "✨ 知识美学", "💰 9.9元起"],
+      "uploadText": "可选：上传背景图",
+      "processingText": "AI 卡片生成中...",
+      "customFields": [
+        { "key": "quote_text", "label": "卡片内容", "type": "textarea", "required": true, "placeholder": "输入金句、知识点或格言" },
+        { "key": "author_name", "label": "作者/来源", "type": "text", "required": false, "placeholder": "例如：鲁迅" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "设计精美的知识卡片/金句海报。背景简约优雅（纯色、渐变或虚化风景）。排版富有设计感，字体优美清晰。突出文字内容，营造静谧、思考的氛围",
+      "user_prompt_placeholder": "例如：日系极简风格，淡雅色彩，留白",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。内容：「{quote_text}」，作者：「{author_name}」",
+      "guidance_scale": 5.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 990,
+      "currency": "CNY",
+      "display": "9.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "photo-booth",
+    "name": "创意大头贴",
+    "description": "多格创意自拍合成",
+    "category": "social-media",
+    "enabled": true,
+    "icon": "📸",
+    "page": {
+      "title": "创意大头贴 AI",
+      "subtitle": "生成趣味多格自拍",
+      "features": ["📸 多格拼图", "✨ 趣味边框", "💰 14.9元起"],
+      "uploadText": "上传自拍照",
+      "processingText": "AI 大头贴生成中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成韩式人生四格（Photo Booth）风格的大头贴。保持人物特征，根据指令变换不同的可爱表情和动作（比心、鬼脸等）。背景为纯色或可爱图案，带有相框装饰。风格清新、胶片感",
+      "user_prompt_placeholder": "例如：粉色背景，头戴兔耳朵，可爱四连拍",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 1490,
+      "currency": "CNY",
+      "display": "14.9",
+      "unit": "元/张"
+    }
+  }
+]
+
+
+
+
+
+

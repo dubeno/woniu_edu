@@ -1,0 +1,376 @@
+[
+  {
+    "id": "smart-erase",
+    "name": "智能消除/保留",
+    "description": "精准移除或保留指定对象",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🧼",
+    "page": {
+      "title": "智能消除与保留",
+      "subtitle": "AI精准控制画面元素",
+      "features": ["🧼 智能消除", "🎯 指定保留", "💰 14.9元起"],
+      "uploadText": "上传需要处理的图片",
+      "uploadHint": "支持复杂背景下的人物/物体处理",
+      "processingText": "AI 智能处理中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "智能图像编辑。根据指令精准移除画面中的干扰元素（如路人、杂物），或只保留指定区域的内容（如“只保留绿线内的人物”）。最大化保持原图的人脸、光影、色调和背景细节，修复区域自然无痕",
+      "user_prompt_placeholder": "例如：移除背景中的路人，只保留中间穿红衣服的女孩",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1490,
+      "currency": "CNY",
+      "display": "14.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "time-conversion",
+    "name": "昼夜/季节变换",
+    "description": "一键转换时间与季节",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🌗",
+    "page": {
+      "title": "昼夜与季节 AI 变换",
+      "subtitle": "改变光影，重塑氛围",
+      "features": ["🌗 昼夜交替", "🍂 四季流转", "💰 19.9元起"],
+      "uploadText": "上传风景或建筑照片",
+      "processingText": "AI 变换场景中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "保持原图的构图和主体结构不变，改变画面的时间和天气属性。例如将白天变为黑夜（增加灯光、星空），将夏天变为冬天（增加积雪、枯树）。光影调整自然真实，氛围感强",
+      "user_prompt_placeholder": "例如：将白天变为繁星点点的黑夜，建筑亮起暖光",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "text-style-transfer",
+    "name": "文字风格化",
+    "description": "英文转中文，手写体设计",
+    "category": "creative",
+    "enabled": true,
+    "icon": "✍️",
+    "page": {
+      "title": "文字风格 AI 转换",
+      "subtitle": "图像内文字的智能重绘",
+      "features": ["✍️ 手写体生成", "🔤 语言转换", "💰 14.9元起"],
+      "uploadText": "上传包含文字的图片",
+      "processingText": "AI 文字重绘中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "图像内文字编辑与风格化。将图片中的指定文字内容进行修改、翻译或风格转换（如英文转中文手写体）。保持文字与背景的融合度，光影透视自然，字体风格符合画面整体调性",
+      "user_prompt_placeholder": "例如：将图片中的英文 'Hello' 改为手写体中文 '你好'",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1490,
+      "currency": "CNY",
+      "display": "14.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "action-figure",
+    "name": "万物皆可手办",
+    "description": "生成高品质3D手办模型",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🧸",
+    "page": {
+      "title": "商业手办 AI 生成",
+      "subtitle": "万物皆可手办化",
+      "features": ["🧸 3D质感", "✨ 商业模型", "💰 24.9元起"],
+      "uploadText": "上传角色/物体图",
+      "processingText": "AI 建模生成中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "将人物或物体转换为高品质的商业手办模型（Blind Box / PVC Figure）。风格为3D渲染，材质为PVC或树脂，具有光泽感和细腻的质感。背景为干净的展示台或配套的场景包装。保持角色的核心特征，但将其风格化为手办比例（如Q版或1/7比例）。",
+      "user_prompt_placeholder": "例如：赛博朋克风格，发光底座，精致细节",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2490,
+      "currency": "CNY",
+      "display": "24.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "silhouette-to-character",
+    "name": "剪影生成角色",
+    "description": "剪影细化为全彩角色",
+    "category": "creative",
+    "enabled": true,
+    "icon": "👤",
+    "page": {
+      "title": "剪影 AI 角色生成",
+      "subtitle": "从轮廓到生动角色",
+      "features": ["👤 剪影细化", "🎨 全彩绘制", "💰 19.9元起"],
+      "uploadText": "上传剪影图",
+      "processingText": "AI 角色绘制中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "将输入的剪影图像细化并绘制为全彩角色形象。根据剪影的轮廓推断或根据指令添加服饰细节、五官表情、材质质感与光影效果。生成高质量的角色插画",
+      "user_prompt_placeholder": "例如：赛博朋克风格战士，发光盔甲",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "creative-element-replacement",
+    "name": "创意元素替换",
+    "description": "材质替换、风格转换",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🎭",
+    "page": {
+      "title": "创意元素替换 AI",
+      "subtitle": "突破现实的想象力",
+      "features": ["🎭 创意无限", "✨ 超现实", "💰 24.9元起"],
+      "uploadText": "上传原图和参考素材",
+      "uploadHint": "主图=要修改的图，参考图=素材/风格",
+      "processingText": "AI 创意处理中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "进行创意的元素替换和材质转换，保持原图的主体构图和基本形态。将指定元素替换为全新的材质、颜色或形态（例如：将马的身体替换为蓝色闪电，保持马的轮廓），创造超现实的视觉效果，细节真实可信，整体富有想象力",
+      "user_prompt_placeholder": "例如：保持宇航员头盔主体不变，面罩反射侏罗纪丛林",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。确保替换后的元素与整体画面协调统一",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2490,
+      "currency": "CNY",
+      "display": "24.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "ai-storyboard",
+    "name": "AI 影视分镜",
+    "description": "剧本一键生成分镜",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🎬",
+    "page": {
+      "title": "AI 影视分镜生成",
+      "subtitle": "从剧本到画面，一键直出",
+      "features": ["🎬 电影感", "📝 剧本还原", "💰 29.9元起"],
+      "uploadText": "可选：上传角色设定图",
+      "processingText": "AI 分镜绘制中...",
+      "customFields": [
+        { "key": "script_content", "label": "分镜描述/剧本", "type": "textarea", "required": true, "placeholder": "例如：主角站在山顶，俯瞰云海，背影孤寂" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "影视/动漫分镜脚本生成。根据参考图和剧情描述，生成一系列连续的镜头画面。保持画风统一，人物形象一致。构图专业，富有电影感（如特写、广角、过肩镜头等）。",
+      "user_prompt_placeholder": "例如：仙侠剧情，主角在山顶练剑，云雾缭绕",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。剧情描述：「{script_content}」",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "character-consistency-series",
+    "name": "角色一致性绘本",
+    "description": "一个角色，生成系列故事",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🎬",
+    "page": {
+      "title": "角色一致性 AI 绘本",
+      "subtitle": "保持角色特征的系列创作",
+      "features": ["🎬 角色一致", "🌟 连续故事", "💰 24.9元起"],
+      "uploadText": "上传角色参考图",
+      "uploadHint": "可生成多个不同场景",
+      "processingText": "AI 绘本生成中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "严格保持参考图中角色的核心特征（面部、服装、体型）完全一致。生成连贯的趣味故事插画。无论动作、表情和场景如何变化，角色的辨识度保持不变。风格可为卡通绘本风格",
+      "user_prompt_placeholder": "例如：角色站在月球表面，好奇地看着远方的地球",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2490,
+      "currency": "CNY",
+      "display": "24.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "style-transfer-art",
+    "name": "艺术风格转换",
+    "description": "照片转艺术作品",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🎨",
+    "page": {
+      "title": "艺术风格 AI 转换",
+      "subtitle": "将照片转换为各种艺术风格",
+      "features": ["🎨 风格多样", "🖼️ 艺术品质", "💰 19.9元起"],
+      "uploadText": "上传照片 + 风格参考图",
+      "processingText": "AI 艺术转换中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "prompt": "保持照片的主体构图和核心元素，参考风格图的艺术表现手法、笔触特点、色彩运用、光影处理，将照片转换为具有相应艺术风格的作品，可以是油画、水彩、素描、版画等各种艺术形式。例如：将城市景观转化为《盗梦空间》折叠城市效果",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 1990,
+      "currency": "CNY",
+      "display": "19.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "meme-enhancement",
+    "name": "表情包二创",
+    "description": "模糊表情包高清+换装",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🤪",
+    "page": {
+      "title": "表情包 AI 二创",
+      "subtitle": "高清修复 + 趣味换装",
+      "features": ["🤪 趣味二创", "✨ 高清重绘", "💰 9.9元起"],
+      "uploadText": "上传表情包",
+      "processingText": "AI 表情包重绘中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "表情包高清重绘与二创。保持原表情包的角色神态和动作，将其重绘为高清图像。根据指令更改角色的服装、配饰或背景，保持画风和谐有趣",
+      "user_prompt_placeholder": "例如：让蒜鸟穿上蓬蓬公主裙泳衣",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false
+    },
+    "pricing": {
+      "base_price": 990,
+      "currency": "CNY",
+      "display": "9.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "group-photo",
+    "name": "完美大合影",
+    "description": "单人照变完美集体照",
+    "category": "creative",
+    "enabled": true,
+    "icon": "👥",
+    "page": {
+      "title": "AI 完美大合影",
+      "subtitle": "不用凑时间，上传单人照自动合成",
+      "features": ["👥 完美表情", "📸 自然站位", "💰 29.9元起"],
+      "uploadText": "上传多张单人/参考图",
+      "uploadHint": "最多支持9张参考图",
+      "processingText": "AI 合成合照中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "多人合照生成。根据提供的多张角色参考图，生成一张无违和感的群像大合照。确保每个角色的面部特征与参考图一致，人物之间的站位、互动自然，光影统一，背景协调",
+      "user_prompt_placeholder": "例如：所有角色在草地上野餐，开心地看着镜头",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "multi-image-composition",
+    "name": "万能 P 图合成",
+    "description": "把人、物、景完美融合",
+    "category": "creative",
+    "enabled": true,
+    "icon": "🧩",
+    "page": {
+      "title": "AI 万能 P 图合成",
+      "subtitle": "上传素材，AI 帮你无痕拼接",
+      "features": ["🧩 自由组合", "✨ 无痕融合", "💰 29.9元起"],
+      "uploadText": "上传多张素材图（人物/背景/道具）",
+      "uploadHint": "最多支持9张素材",
+      "processingText": "AI 创意合成中..."
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "高级多图融合与创意合成。根据指令将上传的多张素材（如人物、背景、道具）有机融合到一个画面中。确保透视关系合理、光影统一、色调和谐。消除拼贴感，使不同来源的素材仿佛原本就在同一个场景中。支持超现实或写实风格",
+      "user_prompt_placeholder": "例如：将图一的人物放在图二的海边，天空中漂浮着图三的热气球",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 7.0,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  }
+]
+

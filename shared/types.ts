@@ -1,110 +1,57 @@
-import type { colors } from "unocss/preset-mini"
-import type { columns, fixedColumnIds } from "./metadata"
-import type { originSources } from "./pre-sources"
+// Lovart PortraitOS - Simplified Types (极简版)
 
-export type Color = "primary" | Exclude<keyof typeof colors, "current" | "inherit" | "transparent" | "black" | "white">
-
-type ConstSources = typeof originSources
-type MainSourceID = keyof(ConstSources)
-
-export type SourceID = {
-  [Key in MainSourceID]: ConstSources[Key] extends { disable?: true } ? never :
-    ConstSources[Key] extends { sub?: infer SubSource } ? {
-    // @ts-expect-error >_<
-      [SubKey in keyof SubSource]: SubSource[SubKey] extends { disable?: true } ? never : `${Key}-${SubKey}`
-    }[keyof SubSource] | Key : Key;
-}[MainSourceID]
-
-export type AllSourceID = {
-  [Key in MainSourceID]: ConstSources[Key] extends { sub?: infer SubSource } ? keyof {
-    // @ts-expect-error >_<
-    [SubKey in keyof SubSource as `${Key}-${SubKey}`]: never
-  } | Key : Key
-}[MainSourceID]
-
-// export type DisabledSourceID = Exclude<SourceID, MainSourceID>
-
-export type ColumnID = keyof typeof columns
-export type Metadata = Record<ColumnID, Column>
-
-export interface PrimitiveMetadata {
-  updatedTime: number
-  data: Record<FixedColumnID, SourceID[]>
-  action: "init" | "manual" | "sync"
+export interface UserInfo {
+  id: string
+  email: string
+  type: "github"
+  created: number
+  updated: number
 }
 
-export type FixedColumnID = (typeof fixedColumnIds)[number]
-export type HiddenColumnID = Exclude<ColumnID, FixedColumnID>
-
-export interface OriginSource extends Partial<Omit<Source, "name" | "redirect">> {
-  name: string
-  sub?: Record<string, {
-    /**
-     * Subtitle 小标题
-     */
-    title: string
-    // type?: "hottest" | "realtime"
-    // desc?: string
-    // column?: ManualColumnID
-    // color?: Color
-    // home?: string
-    // disable?: boolean
-    // interval?: number
-  } & Partial<Omit<Source, "title" | "name" | "redirect">>>
+// 简化：只保留核心订单字段
+export interface Order {
+  id: string
+  customer_name: string
+  customer_phone?: string
+  status: "pending" | "processing" | "completed"
+  created_by: string
+  created_at: number
 }
 
-export interface Source {
-  name: string
-  /**
-   * 刷新的间隔时间
-   */
-  interval: number
-  color: Color
-
-  /**
-   * Subtitle 小标题
-   */
-  title?: string
-  desc?: string
-  /**
-   * Default normal timeline
-   */
-  type?: "hottest" | "realtime"
-  column?: HiddenColumnID
-  home?: string
-  /**
-   * @default false
-   */
-  disable?: boolean | "cf"
-  redirect?: SourceID
+// 简化：只保留核心照片字段
+export interface Photo {
+  id: string
+  order_id: string
+  original_url: string
+  processed_url?: string
+  face_count: number
+  created_at: number
 }
 
-export interface Column {
-  name: string
-  sources: SourceID[]
+// 新增：场景化AI图像处理记录（核心功能）
+export interface Restoration {
+  id: string
+  user_id?: string           // 可选，未登录也能用
+  scene_id?: string          // 场景ID，默认 old-photo-restoration
+  original_url: string
+  restored_url?: string
+  status: "pending" | "processing" | "completed" | "failed"
+  payment_status: "unpaid" | "paid"
+  price: number              // 单位：分
+  error?: string
+  created_at: number
+  completed_at?: number
 }
 
-export interface NewsItem {
-  id: string | number // unique
-  title: string
-  url: string
-  mobileUrl?: string
-  pubDate?: number | string
-  extra?: {
-    hover?: string
-    date?: number | string
-    info?: false | string
-    diff?: number
-    icon?: false | string | {
-      url: string
-      scale: number
-    }
-  }
-}
-
-export interface SourceResponse {
-  status: "success" | "cache"
-  id: SourceID
-  updatedTime: number | string
-  items: NewsItem[]
+// 付费订阅（朱啸虎：商业化）
+export interface Subscription {
+  id: string
+  user_id: string
+  plan: "trial" | "basic" | "pro"
+  price: number
+  status: "active" | "cancelled" | "expired"
+  started_at: number
+  expires_at: number
+  photos_limit: number
+  photos_used: number
 }

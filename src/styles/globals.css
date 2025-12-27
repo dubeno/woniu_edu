@@ -31,8 +31,35 @@ button:disabled {
   pointer-events: all !important;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 ::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
 /* https://github.com/KingSora/OverlayScrollbars/blob/master/packages/overlayscrollbars/src/styles/themes.scss */
@@ -43,9 +70,12 @@ button:disabled {
 }
 
 
-*, a, button {
-  cursor: default;
+* {
   user-select: none;
+}
+
+a, button, label[for], [role="button"] {
+  cursor: pointer;
 }
 
 #dropdown-menu li {
