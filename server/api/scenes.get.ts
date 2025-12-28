@@ -1,7 +1,6 @@
-// 获取所有可用场景配置
 import { getEnabledScenes } from "../../shared/scene-config"
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(() => {
   const scenes = getEnabledScenes()
   
   return {

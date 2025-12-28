@@ -4,11 +4,22 @@
 // 参考文档：https://www.volcengine.com/docs/82379/1824691
 
 import { nanoid } from "nanoid"
-import { getRestorationsTable } from "../database"
+import { getRestorationsTable, getRateLimitTable, getUserTable } from "../database"
 import { getSceneById, calculatePrice, type SceneConfig } from "../../shared/scene-config"
+
+function getClientIP(event: any): string {
+  const headers = event.node.req.headers
+  const forwarded = headers["x-forwarded-for"] || headers["x-real-ip"]
+  if (forwarded) {
+    return Array.isArray(forwarded) ? forwarded[0] : forwarded.split(",")[0].trim()
+  }
+  return event.node.req.socket?.remoteAddress || "unknown"
+}
 
 export default defineEventHandler(async (event) => {
   try {
+    logger.info(`收到restore请求: ${event.node.req.url}, 用户: ${event.context.user?.id || '未登录'}`)
+    
     // 读取上传的文件和参数
     const form = await readFormData(event)
     
@@ -18,6 +29,35 @@ export default defineEventHandler(async (event) => {
     
     // 场景和用户配置
     const sceneId = form.get("scene_id") as string || "old-photo-restoration"
+    
+    // 获取客户端IP
+    const clientIP = getClientIP(event)
+    
+    // IP限制检查（未登录用户）
+    const user = event.context.user
+    if (!user) {
+      try {
+        const rateLimitTable = getRateLimitTable()
+        const limitCheck = await rateLimitTable.checkLimit(clientIP, 5, 24 * 60 * 60 * 1000) // 24小时内5次
+        
+        if (!limitCheck.allowed) {
+          const resetTime = new Date(limitCheck.resetAt).toLocaleString("zh-CN")
+          throw createError({
+            statusCode: 429,
+            message: `IP限制：每个IP每天最多5次免费使用。请登录后使用积分继续，或等待至 ${resetTime} 后重试`
+          })
+        }
+        
+        logger.info(`IP限制检查通过: ${clientIP}, 剩余 ${limitCheck.remaining} 次`)
+      } catch (error: any) {
+        // 如果rate limit表未初始化，记录警告但继续
+        if (error.message?.includes("not initialized")) {
+          logger.warn("RateLimitTable未初始化，跳过IP限制检查")
+        } else {
+          throw error
+        }
+      }
+    }
     const userPrompt = form.get("prompt") as string || ""
     const negativePrompt = form.get("negative_prompt") as string || ""
     const guidanceScale = form.get("guidance_scale") as string
@@ -29,18 +69,25 @@ export default defineEventHandler(async (event) => {
     const customFieldKeys = [
       // 旧字段
       "main_title", "subtitle", "title_text", "subtitle_text", "product_name", "slogan", "topic", "key_points",
-      // 新增字段
-      "exhibition_title", "exhibition_info",
-      "couple_names", "wedding_date",
-      "festival_name", "greeting_text",
-      "restaurant_name", "menu_items",
-      "script_content", "product_type",
-      "zodiac_name", "city_name",
-      "manual_title", "manual_content",
-      "material_desc",
-      // 补全遗漏的字段
+      // 婚礼系列 (wedding)
+      "couple_names", "wedding_date", "venue_location", "welcome_message", "design_style", 
+      "announcement_text", "style_preference", "poster_type",
+      "anniversary_message", "anniversary_date", "anniversary_type",
+      // 生活旅行 (life-travel)
+      "festival_name", "greeting_text", "location_name", "zodiac_sign", "event_date", 
+      "exhibition_name", "album_theme",
+      // 商业 (commercial)
+      "restaurant_name", "menu_items", "dish_name", "price", "step_desc",
+      // 创意 (creative)
+      "script_content",
+      "creative_theme", "baby_age", "photo_occasion",
+      // 电商 (ecommerce)
+      "product_type", "selling_points",
+      // 社交媒体 (social-media)
       "article_topic", "video_title", "quote_text", "author_name",
-      "location_name", "zodiac_sign", "event_date", "exhibition_name"
+      // 其他
+      "zodiac_name", "city_name", "manual_title", "manual_content", "material_desc",
+      "exhibition_title", "exhibition_info"
     ]
     
     for (const key of customFieldKeys) {
@@ -54,6 +101,24 @@ export default defineEventHandler(async (event) => {
       throw createError({
         statusCode: 400,
         message: "No main image uploaded"
+      })
+    }
+
+    // 文件上传安全验证
+    const maxFileSize = 10 * 1024 * 1024 // 10MB
+    if (mainImage.size > maxFileSize) {
+      throw createError({
+        statusCode: 400,
+        message: "文件大小不能超过10MB"
+      })
+    }
+
+    // 验证文件类型（允许图片格式）
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif"]
+    if (!allowedTypes.includes(mainImage.type)) {
+      throw createError({
+        statusCode: 400,
+        message: "不支持的文件类型，仅支持 JPEG、PNG、WebP、GIF"
       })
     }
 
@@ -77,13 +142,43 @@ export default defineEventHandler(async (event) => {
     const { saveUploadedPhoto } = await import("../utils/storage")
     const { url: originalUrl } = await saveUploadedPhoto(mainImage, mainImage.name)
 
-    // 计算价格
+    // 已登录用户：检查并扣除积分
+    if (user) {
+      const userTable = getUserTable()
+      const price = calculatePrice(sceneId)
+      const creditCost = Math.ceil(price / 100) // 将价格（分）转换为积分（1元=1积分）
+      
+      const userCredits = await userTable.getCredits(user.id)
+      if (userCredits < creditCost) {
+        throw createError({
+          statusCode: 402,
+          message: `积分不足：需要 ${creditCost} 积分，当前 ${userCredits} 积分。请充值后继续`
+        })
+      }
+      
+      // 扣除积分
+      const deducted = await userTable.deductCredits(user.id, creditCost)
+      if (!deducted) {
+        throw createError({
+          statusCode: 402,
+          message: `积分扣除失败`
+        })
+      }
+      
+      logger.info(`用户 ${user.id} 扣除 ${creditCost} 积分，剩余 ${userCredits - creditCost} 积分，场景: ${sceneId}`)
+    }
+
+    // 计算价格（用于记录）
     const price = calculatePrice(sceneId)
+
+    // 获取用户ID（如果已登录）
+    const userId = user?.id || null
+    logger.info(`创建修复记录 - 用户ID: ${userId || '未登录'}, 场景: ${sceneId}`)
 
     // 创建修复记录
     const restoration = {
       id: nanoid(),
-      user_id: event.context.user?.id,
+      user_id: userId,
       original_url: originalUrl,
       scene_id: sceneId,
       status: "processing" as const,
@@ -94,6 +189,7 @@ export default defineEventHandler(async (event) => {
 
     const restorationsTable = getRestorationsTable()
     await restorationsTable.create(restoration)
+    logger.success(`修复记录已创建: ${restoration.id}, 用户ID: ${userId || 'null'}`)
 
     // 调用火山方舟API进行处理
     try {
@@ -178,9 +274,18 @@ export default defineEventHandler(async (event) => {
     }
   } catch (error: any) {
     logger.error("Failed to process photo:", error)
+    // 如果错误已经有statusCode，直接抛出
+    if (error.statusCode) {
+      throw error
+    }
+    // 否则包装为500错误
     throw createError({
       statusCode: 500,
-      message: error.message || "Failed to process photo"
+      message: error.message || "Failed to process photo",
+      data: {
+        error: error.message,
+        stack: process.env.NODE_ENV === "development" ? error.stack : undefined
+      }
     })
   }
 })

@@ -146,7 +146,7 @@ function CategoriesPage() {
         {/* Quick Access */}
         <div className="max-w-4xl mx-auto mt-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            🔥 热门场景
+            热门场景
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.flatMap(c => c.scenes).slice(0, 8).map(scene => (

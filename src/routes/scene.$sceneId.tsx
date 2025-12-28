@@ -1,6 +1,9 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router"
 import { useState, useEffect } from "react"
+import { useAtom } from "jotai"
+import { jwtAtom } from "~/hooks/useLogin"
 import { ProfessionalUploader } from "../components/ProfessionalUploader"
+import { SceneIcon } from "../components/SceneIcon"
 
 export const Route = createFileRoute("/scene/$sceneId")({
   component: SceneDetailPage,
@@ -36,6 +39,7 @@ interface Scene {
 function SceneDetailPage() {
   const { sceneId } = Route.useParams()
   const navigate = useNavigate()
+  const [jwt] = useAtom(jwtAtom) // 使用atom而不是直接从localStorage读取（避免JSON序列化问题）
   const [scene, setScene] = useState<Scene | null>(null)
   const [allScenes, setAllScenes] = useState<Scene[]>([])
   const [loading, setLoading] = useState(true)
@@ -81,6 +85,21 @@ function SceneDetailPage() {
   const handleMainImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      // 文件大小验证 (10MB)
+      const maxSize = 10 * 1024 * 1024 // 10MB
+      if (file.size > maxSize) {
+        alert(`图片太大！最大支持 10MB，当前文件 ${(file.size / 1024 / 1024).toFixed(2)}MB`)
+        e.target.value = '' // 清空选择
+        return
+      }
+      
+      // 文件类型验证
+      if (!file.type.startsWith('image/')) {
+        alert('请上传图片文件！')
+        e.target.value = ''
+        return
+      }
+      
       setMainImage(file)
       setMainPreviewUrl(URL.createObjectURL(file))
       setResult(null)
@@ -136,18 +155,32 @@ function SceneDetailPage() {
         }
       })
 
+      const headers: HeadersInit = {}
+      if (jwt) {
+        headers["Authorization"] = `Bearer ${jwt}`
+        console.log("上传图片，已传递 JWT token")
+      } else {
+        console.warn("上传图片，未登录（历史记录不会被保存）")
+      }
+      
       const response = await fetch("/api/restore", {
+        headers,
         method: "POST",
         body: formData,
       })
 
-      if (!response.ok) throw new Error("Upload failed")
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: "Upload failed" }))
+        const errorMessage = errorData.message || `上传失败 (${response.status})`
+        throw new Error(errorMessage)
+      }
 
       const data = await response.json()
       setResult(data)
-    } catch (error) {
+    } catch (error: any) {
       console.error("Upload error:", error)
-      alert("处理失败，请重试。")
+      const errorMessage = error.message || "处理失败，请重试。"
+      alert(errorMessage)
     } finally {
       setUploading(false)
     }
@@ -177,47 +210,56 @@ function SceneDetailPage() {
 
   // Helper to get result URLs
   const resultUrls = result?.restored_urls || (result?.restored_url ? [result.restored_url] : [])
+  const firstResultUrl = resultUrls[0] || null
 
   return (
     <div className="h-screen bg-white text-gray-900 flex flex-col overflow-hidden">
-      {/* Lightbox */}
+      {/* Elegant Lightbox */}
       {lightboxUrl && (
         <div 
-          className="fixed inset-0 z-50 bg-black flex items-center justify-center p-4 cursor-zoom-out"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out animate-fade-in"
           onClick={() => setLightboxUrl(null)}
         >
-          <div className="relative max-w-[95vw] max-h-[95vh]">
-            <img src={lightboxUrl} className="max-w-full max-h-full object-contain" alt="Preview" />
+          <div className="relative max-w-[95vw] max-h-[95vh] group">
+            <img 
+              src={lightboxUrl} 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-300" 
+              alt="Preview" 
+            />
             <button
               onClick={() => setLightboxUrl(null)}
-              className="absolute top-4 right-4 bg-white text-gray-900 p-2 border border-gray-300 hover:bg-gray-50"
+              className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-900 p-2.5 rounded-full shadow-lg hover:shadow-xl transition-all opacity-0 group-hover:opacity-100"
             >
-              ✕
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
           </div>
         </div>
       )}
 
-      {/* Header Bar */}
-      <div className="border-b border-gray-300 bg-white flex-shrink-0 z-40">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-                <Link to="/" className="text-gray-600 hover:text-gray-900 active:text-gray-800 transition-colors text-sm cursor-pointer">
+      {/* Minimal Header Bar - 更简洁的设计 */}
+      <div className="border-b border-gray-200 bg-white/95 backdrop-blur-sm flex-shrink-0 z-40">
+        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+                <Link to="/" className="text-gray-500 hover:text-gray-900 transition-colors text-xs cursor-pointer">
                     &lt; 工作台
                 </Link>
-                <div className="h-4 w-px bg-gray-300"></div>
+                <div className="h-3 w-px bg-gray-300"></div>
                 <div className="relative">
                   <button
                     onClick={() => setShowSceneSwitcher(!showSceneSwitcher)}
-                    className="flex items-center gap-2 text-gray-900 hover:text-gray-700 transition-colors"
+                    className="flex items-center gap-1.5 text-gray-900 hover:text-gray-700 transition-colors text-sm"
                   >
-                    <span className="text-xl">{scene.icon}</span>
-                    <h1 className="text-base font-semibold">{scene.page.title}</h1>
-                    <span className="text-xs text-gray-500">▼</span>
+                    <SceneIcon sceneId={scene.id} className="w-4 h-4 text-gray-600" />
+                    <span className="text-sm font-medium">{scene.page.title}</span>
+                    <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
                   </button>
                   
                   {showSceneSwitcher && (
-                    <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto custom-scrollbar min-w-[300px]">
+                    <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto custom-scrollbar min-w-[280px]">
                       <div className="p-2">
                         {allScenes.map(s => (
                           <button
@@ -231,8 +273,8 @@ function SceneDetailPage() {
                             }`}
                           >
                             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                                <span className="text-lg">{s.icon}</span>
+                              <div className="flex items-center gap-2">
+                                <SceneIcon sceneId={s.id} className="w-4 h-4 text-gray-600" />
                                 <span className="text-sm text-gray-900">{s.name}</span>
                               </div>
                               <span className="text-xs text-gray-500">¥{s.pricing.display}</span>
@@ -255,114 +297,33 @@ function SceneDetailPage() {
         />
       )}
 
-      <div className="container mx-auto px-4 py-4 flex-1 overflow-hidden flex flex-col">
-        {!result ? (
-            <ProfessionalUploader
-              mainImage={mainImage}
-              referenceImages={referenceImages}
-              mainPreviewUrl={mainPreviewUrl}
-              refPreviewUrls={refPreviewUrls}
-              userPrompt={userPrompt}
-              negativePrompt={negativePrompt}
-              guidanceScale={guidanceScale}
-              size={size}
-              showAdvanced={showAdvanced}
-              customFields={customFields}
-              sceneCustomFields={scene.page.customFields}
-              onMainImageSelect={handleMainImageSelect}
-              onReferenceImageSelect={handleReferenceImageSelect}
-              onRemoveReference={removeReferenceImage}
-              onPromptChange={setUserPrompt}
-              onNegativePromptChange={setNegativePrompt}
-              onGuidanceScaleChange={setGuidanceScale}
-              onSizeChange={setSize}
-              onToggleAdvanced={() => setShowAdvanced(!showAdvanced)}
-              onCustomFieldChange={handleCustomFieldChange}
-              onOptimizePrompt={handleOptimizePrompt}
-              onUpload={handleUpload}
-              uploading={uploading}
-            />
-        ) : (
-            // RESULT VIEW
-            <div className="max-w-6xl mx-auto flex-1 flex flex-col min-h-0">
-                <div className="bg-white border border-gray-300 overflow-hidden flex flex-col flex-1 min-h-0">
-                    {/* Toolbar */}
-                    <div className="p-3 border-b border-gray-300 flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            <span className="text-sm font-medium text-gray-900">
-                              处理完成 ({resultUrls.length} 张)
-                            </span>
-                        </div>
-                        <button 
-                            onClick={() => setResult(null)}
-                            className="text-xs text-gray-600 hover:text-gray-900 active:text-gray-800 transition-colors px-3 py-1.5 border border-gray-300 hover:bg-gray-50 rounded cursor-pointer"
-                        >
-                            关闭
-                        </button>
-                    </div>
-                    
-                    {/* Full Width Result View */}
-                    <div className="bg-gray-50 p-4 flex flex-col flex-1 overflow-y-auto custom-scrollbar min-h-0">
-                        <div className={`grid ${resultUrls.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'} gap-4`}>
-                            {resultUrls.map((url: string, index: number) => (
-                              <div key={index} className="bg-white border border-gray-300 relative group">
-                                  <div className="w-full bg-white flex items-center justify-center p-6 min-h-[500px]">
-                                  <img 
-                                    src={url} 
-                                    alt={`Result ${index + 1}`} 
-                                      className="max-w-full max-h-full object-contain cursor-zoom-in"
-                                    onClick={() => setLightboxUrl(url)}
-                                  />
-                                  </div>
-                                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a 
-                                      href={url} 
-                                      download={`generated-${index}.png`}
-                                      className="bg-white hover:bg-gray-100 active:bg-gray-200 text-gray-900 p-2 border border-gray-300 rounded transition-colors cursor-pointer"
-                                      title="下载图片"
-                                      onClick={(e) => e.stopPropagation()}
-                                    >
-                                      ⬇
-                                    </a>
-                                  </div>
-                              </div>
-                            ))}
-                        </div>
-                    </div>
-                    
-                    {/* Action Footer */}
-                    <div className="p-4 border-t border-gray-300 flex justify-between items-center flex-shrink-0">
-                        <div className="text-xs text-gray-500">
-                           {result.id?.substring(0,8)}
-                        </div>
-                        <div className="flex gap-3">
-                            <button
-                                onClick={() => {
-                                    setResult(null)
-                                }}
-                                className="px-4 py-2 text-gray-600 hover:text-gray-900 active:text-gray-800 text-sm transition-colors border border-gray-300 hover:bg-gray-50 rounded cursor-pointer"
-                            >
-                                返回修改
-                            </button>
-                            <button 
-                                onClick={() => {
-                                    setResult(null)
-                                    setMainImage(null)
-                                    setMainPreviewUrl("")
-                                    setReferenceImages([])
-                                    setRefPreviewUrls([])
-                                    setUserPrompt("")
-                                }}
-                                className="px-6 py-2 bg-gray-900 hover:bg-gray-800 active:bg-gray-700 text-white font-semibold text-sm transition-colors rounded cursor-pointer"
-                            >
-                                开始新任务
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )}
+      <div className="container mx-auto px-4 py-4 flex-1 overflow-hidden flex flex-col min-h-0">
+        <ProfessionalUploader
+          mainImage={mainImage}
+          referenceImages={referenceImages}
+          mainPreviewUrl={mainPreviewUrl}
+          refPreviewUrls={refPreviewUrls}
+          userPrompt={userPrompt}
+          negativePrompt={negativePrompt}
+          guidanceScale={guidanceScale}
+          size={size}
+          showAdvanced={showAdvanced}
+          customFields={customFields}
+          sceneCustomFields={scene.page.customFields}
+          onMainImageSelect={handleMainImageSelect}
+          onReferenceImageSelect={handleReferenceImageSelect}
+          onRemoveReference={removeReferenceImage}
+          onPromptChange={setUserPrompt}
+          onNegativePromptChange={setNegativePrompt}
+          onGuidanceScaleChange={setGuidanceScale}
+          onSizeChange={setSize}
+          onToggleAdvanced={() => setShowAdvanced(!showAdvanced)}
+          onCustomFieldChange={handleCustomFieldChange}
+          onOptimizePrompt={handleOptimizePrompt}
+          onUpload={handleUpload}
+          uploading={uploading}
+          resultImageUrl={firstResultUrl}
+        />
       </div>
     </div>
   )

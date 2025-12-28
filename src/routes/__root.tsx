@@ -12,9 +12,9 @@ export const Route = createRootRouteWithContext<{
 
 function RootComponent() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+    <div className="h-screen flex flex-col bg-white text-gray-900 overflow-hidden">
       <Header />
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col min-h-0 overflow-y-auto">
         <Outlet />
       </main>
     </div>

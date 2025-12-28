@@ -22,3 +22,17 @@ export async function myCrypto(s: string, algorithm: Algorithm) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("")
   return hashHex
 }
+
+// 密码哈希和验证
+export async function hashPassword(password: string): Promise<string> {
+  // 使用 bcrypt 或简单的 SHA-256 + salt
+  // 这里使用 SHA-256 + 固定salt（生产环境应使用随机salt）
+  const salt = process.env.PASSWORD_SALT || "wow-salt-2025"
+  const hash = await myCrypto(password + salt, "SHA-256")
+  return hash
+}
+
+export async function verifyPassword(password: string, hash: string): Promise<boolean> {
+  const passwordHash = await hashPassword(password)
+  return passwordHash === hash
+}

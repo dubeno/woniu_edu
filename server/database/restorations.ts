@@ -96,11 +96,33 @@ export class RestorationsTable {
     logger.success(`update restoration ${id}`)
   }
 
+  async count(): Promise<number> {
+    const result = await this.db.prepare(`SELECT COUNT(*) as count FROM restorations`).get() as { count: number }
+    return result?.count || 0
+  }
+
+  async countByStatus(status: string): Promise<number> {
+    const result = await this.db.prepare(`SELECT COUNT(*) as count FROM restorations WHERE status = ?`).get(status) as { count: number }
+    return result?.count || 0
+  }
+
+  async countSince(timestamp: number): Promise<number> {
+    const result = await this.db.prepare(`SELECT COUNT(*) as count FROM restorations WHERE created_at >= ?`).get(timestamp) as { count: number }
+    return result?.count || 0
+  }
+
   async listByUser(userId: string) {
     const rows = await this.db.prepare(`
       SELECT * FROM restorations WHERE user_id = ? ORDER BY created_at DESC
     `).all(userId) as any
     return (rows.results ?? rows) as Restoration[]
+  }
+
+  /**
+   * 获取数据库实例（用于管理后台）
+   */
+  getDb() {
+    return this.db
   }
 }
 

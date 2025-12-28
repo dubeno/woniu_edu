@@ -12,8 +12,11 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as TemplatesImport } from './routes/templates'
+import { Route as ProfileImport } from './routes/profile'
+import { Route as LoginImport } from './routes/login'
 import { Route as CategoriesImport } from './routes/categories'
 import { Route as BlogImport } from './routes/blog'
+import { Route as AdminImport } from './routes/admin'
 import { Route as IndexImport } from './routes/index'
 import { Route as ScenesSceneIdImport } from './routes/scenes.$sceneId'
 import { Route as SceneSceneIdImport } from './routes/scene.$sceneId'
@@ -28,6 +31,18 @@ const TemplatesRoute = TemplatesImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ProfileRoute = ProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const CategoriesRoute = CategoriesImport.update({
   id: '/categories',
   path: '/categories',
@@ -37,6 +52,12 @@ const CategoriesRoute = CategoriesImport.update({
 const BlogRoute = BlogImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AdminRoute = AdminImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminImport
+      parentRoute: typeof rootRoute
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -93,6 +121,20 @@ declare module '@tanstack/react-router' {
       path: '/categories'
       fullPath: '/categories'
       preLoaderRoute: typeof CategoriesImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileImport
       parentRoute: typeof rootRoute
     }
     '/templates': {
@@ -147,8 +189,11 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
   '/categories': typeof CategoriesRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -158,8 +203,11 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
   '/categories': typeof CategoriesRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -170,8 +218,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
   '/categories': typeof CategoriesRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -183,8 +234,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/blog'
     | '/categories'
+    | '/login'
+    | '/profile'
     | '/templates'
     | '/blog/$postId'
     | '/category/$categoryId'
@@ -193,8 +247,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/blog'
     | '/categories'
+    | '/login'
+    | '/profile'
     | '/templates'
     | '/blog/$postId'
     | '/category/$categoryId'
@@ -203,8 +260,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/blog'
     | '/categories'
+    | '/login'
+    | '/profile'
     | '/templates'
     | '/blog/$postId'
     | '/category/$categoryId'
@@ -215,8 +275,11 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   BlogRoute: typeof BlogRouteWithChildren
   CategoriesRoute: typeof CategoriesRoute
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
   TemplatesRoute: typeof TemplatesRoute
   CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
   SceneSceneIdRoute: typeof SceneSceneIdRoute
@@ -225,8 +288,11 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   BlogRoute: BlogRouteWithChildren,
   CategoriesRoute: CategoriesRoute,
+  LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
   TemplatesRoute: TemplatesRoute,
   CategoryCategoryIdRoute: CategoryCategoryIdRoute,
   SceneSceneIdRoute: SceneSceneIdRoute,
@@ -244,8 +310,11 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/admin",
         "/blog",
         "/categories",
+        "/login",
+        "/profile",
         "/templates",
         "/category/$categoryId",
         "/scene/$sceneId",
@@ -255,6 +324,9 @@ export const routeTree = rootRoute
     "/": {
       "filePath": "index.tsx"
     },
+    "/admin": {
+      "filePath": "admin.tsx"
+    },
     "/blog": {
       "filePath": "blog.tsx",
       "children": [
@@ -263,6 +335,12 @@ export const routeTree = rootRoute
     },
     "/categories": {
       "filePath": "categories.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
+    },
+    "/profile": {
+      "filePath": "profile.tsx"
     },
     "/templates": {
       "filePath": "templates.tsx"

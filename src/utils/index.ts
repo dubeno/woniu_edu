@@ -41,6 +41,12 @@ export const myFetch = $fetch.create({
   timeout: 15000,
   retry: 0,
   baseURL: "/api",
+  onResponseError({ response }) {
+    // 确保错误消息可以被正确提取
+    if (response._data && typeof response._data === 'object') {
+      response._data.statusCode = response.status
+    }
+  },
 })
 
 export function isiOS() {

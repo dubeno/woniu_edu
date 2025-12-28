@@ -244,35 +244,48 @@ function SceneDetailPage() {
               uploading={uploading}
             />
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-8 animate-fade-in">
+              {/* Elegant Header */}
               <div className="text-center">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {scene.name}完成！
-                </h2>
-                <p className="text-gray-600">对比查看效果</p>
+                <div className="inline-flex items-center gap-2 mb-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                  <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
+                    {scene.name}完成
+                  </h2>
+                </div>
+                <p className="text-gray-500 text-sm">对比查看效果</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm font-medium text-gray-700 mb-2">原图</p>
-                  <img 
-                    src={result.original_url} 
-                    alt="Original" 
-                    className="w-full rounded-lg shadow-md"
-                  />
+              {/* Elegant Comparison View */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                  <div className="px-4 py-3 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
+                    <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">原图</p>
+                  </div>
+                  <div className="p-6 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={result.original_url} 
+                      alt="Original" 
+                      className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                      style={{ maxWidth: '100%', maxHeight: '100%' }}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-700 mb-2">{scene.name}后</p>
-                  <div className="relative">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                  <div className="px-4 py-3 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
+                    <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">{scene.name}后</p>
+                  </div>
+                  <div className="p-6 bg-gradient-to-br from-gray-50 to-white relative flex items-center justify-center overflow-hidden">
                     <img 
                       src={result.restored_url} 
                       alt="Restored" 
-                      className="w-full rounded-lg shadow-md"
+                      className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                      style={{ maxWidth: '100%', maxHeight: '100%' }}
                     />
                     {result.payment_status === "unpaid" && (
-                      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                        <div className="bg-white px-4 py-2 rounded-lg shadow-lg">
-                          <p className="text-sm text-gray-600">付费后查看高清图</p>
+                      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                        <div className="bg-white/95 backdrop-blur-sm px-6 py-4 rounded-xl shadow-xl border border-gray-200">
+                          <p className="text-sm font-medium text-gray-700">付费后查看高清图</p>
                         </div>
                       </div>
                     )}
@@ -280,14 +293,15 @@ function SceneDetailPage() {
                 </div>
               </div>
 
-              <div className="space-y-3">
+              {/* Clean Action Buttons */}
+              <div className="space-y-3 pt-2">
                 {result.payment_status === "unpaid" ? (
                   <>
                     <button
                       onClick={handlePay}
-                      className="w-full bg-green-600 text-white py-4 px-6 rounded-xl font-medium text-lg hover:bg-green-700 transition-colors"
+                      className="w-full bg-gray-900 hover:bg-gray-800 active:bg-gray-700 text-white py-4 px-6 rounded-xl font-semibold text-base transition-all shadow-sm hover:shadow-md"
                     >
-                      支付 {scene.pricing.display}元 下载高清图
+                      支付 ¥{scene.pricing.display} 下载高清图
                     </button>
                     <button
                       onClick={() => {
@@ -297,7 +311,7 @@ function SceneDetailPage() {
                         setReferenceImages([])
                         setRefPreviewUrls([])
                       }}
-                      className="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-xl font-medium hover:bg-gray-200 transition-colors"
+                      className="w-full bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-700 py-3.5 px-6 rounded-xl font-medium transition-all border border-gray-200 hover:border-gray-300"
                     >
                       修复其他照片
                     </button>
@@ -311,7 +325,7 @@ function SceneDetailPage() {
                       setReferenceImages([])
                       setRefPreviewUrls([])
                     }}
-                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-medium text-lg hover:bg-blue-700 transition-colors"
+                    className="w-full bg-gray-900 hover:bg-gray-800 active:bg-gray-700 text-white py-4 px-6 rounded-xl font-semibold text-base transition-all shadow-sm hover:shadow-md"
                   >
                     继续修复其他照片
                   </button>
