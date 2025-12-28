@@ -1,5 +1,5 @@
 -- Cloudflare D1 数据库初始化脚本
--- 执行命令: npx wrangler d1 execute newsnow-db --remote --file=./scripts/init-db.sql
+-- 执行命令: npx wrangler d1 execute wow --remote --file=./scripts/init-db.sql
 
 -- 用户表
 CREATE TABLE IF NOT EXISTS user (
