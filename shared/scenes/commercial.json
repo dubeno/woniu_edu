@@ -4,7 +4,7 @@
     "name": "商业人像精修",
     "description": "杂志级皮肤/妆容精修",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "💄",
     "page": {
       "title": "商业人像 AI 精修",
@@ -35,7 +35,7 @@
     "name": "美食滤镜/摆盘",
     "description": "让食物更有食欲",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "🍜",
     "page": {
       "title": "美食摄影 AI 优化",
@@ -65,7 +65,7 @@
     "name": "菜单/海报设计",
     "description": "餐饮门店专属设计",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "🍽️",
     "page": {
       "title": "餐饮菜单 AI 设计",
@@ -99,7 +99,7 @@
     "name": "产品说明书插图",
     "description": "清晰易懂的步骤图",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "📖",
     "page": {
       "title": "说明书插图 AI 生成",
@@ -132,7 +132,7 @@
     "name": "美食创意大片",
     "description": "让食物像变魔术一样诱人",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "🍔",
     "page": {
       "title": "美食创意大片 AI 生成",
@@ -164,7 +164,7 @@
     "name": "万能素材工厂",
     "description": "生成纹理/书法/图表素材",
     "category": "commercial",
-    "enabled": true,
+    "enabled": false,
     "icon": "🔬",
     "page": {
       "title": "AI 万能素材工厂",

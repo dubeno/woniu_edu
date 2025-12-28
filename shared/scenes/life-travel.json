@@ -4,7 +4,7 @@
     "name": "旅行明信片",
     "description": "打卡照变唯美明信片",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "🏞️",
     "page": {
       "title": "旅行明信片 AI 制作",
@@ -37,7 +37,7 @@
     "name": "星座运势壁纸",
     "description": "专属星座幸运壁纸",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "🔮",
     "page": {
       "title": "星座壁纸 AI 定制",
@@ -70,7 +70,7 @@
     "name": "节日祝福海报",
     "description": "节日/生日专属祝福",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎉",
     "page": {
       "title": "节日祝福 AI 海报",
@@ -104,7 +104,7 @@
     "name": "婚礼/宴会请柬",
     "description": "唯美电子请柬设计",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "💌",
     "page": {
       "title": "婚礼请柬 AI 设计",
@@ -138,7 +138,7 @@
     "name": "婚礼相册设计",
     "description": "精美婚礼相册排版设计",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "📸",
     "page": {
       "title": "婚礼相册 AI 设计",
@@ -175,7 +175,7 @@
     "name": "艺术展海报",
     "description": "极简艺术风格海报",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎨",
     "page": {
       "title": "艺术展海报 AI 设计",
@@ -208,7 +208,7 @@
     "name": "旧房/毛坯房改造",
     "description": "一键换装修风格",
     "category": "life-travel",
-    "enabled": true,
+    "enabled": false,
     "icon": "🏠",
     "page": {
       "title": "旧房/毛坯房 AI 改造",

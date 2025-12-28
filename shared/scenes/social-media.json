@@ -135,7 +135,7 @@
     "name": "知识卡片生成",
     "description": "金句/知识点卡片",
     "category": "social-media",
-    "enabled": true,
+    "enabled": false,
     "icon": "📝",
     "page": {
       "title": "知识卡片 AI 生成",
@@ -169,7 +169,7 @@
     "name": "创意大头贴",
     "description": "多格创意自拍合成",
     "category": "social-media",
-    "enabled": true,
+    "enabled": false,
     "icon": "📸",
     "page": {
       "title": "创意大头贴 AI",

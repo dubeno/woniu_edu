@@ -76,7 +76,7 @@
     "name": "商品场景合成",
     "description": "商品 + 场景，打造氛围感",
     "category": "ecommerce",
-    "enabled": true,
+    "enabled": false,
     "icon": "📦",
     "page": {
       "title": "商品场景 AI 合成",
@@ -105,7 +105,7 @@
     "name": "产品结构分解",
     "description": "工业级产品爆炸图",
     "category": "ecommerce",
-    "enabled": true,
+    "enabled": false,
     "icon": "⚙️",
     "page": {
       "title": "产品结构 AI 分解",
@@ -135,7 +135,7 @@
     "name": "周边产品设计",
     "description": "IP周边效果图展示",
     "category": "ecommerce",
-    "enabled": true,
+    "enabled": false,
     "icon": "🛍️",
     "page": {
       "title": "周边产品 AI 设计",
@@ -169,7 +169,7 @@
     "name": "人物穿搭体验",
     "description": "保持人物特征，体验不同穿搭",
     "category": "ecommerce",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎭",
     "page": {
       "title": "人物穿搭 AI 体验",

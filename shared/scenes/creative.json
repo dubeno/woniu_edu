@@ -35,7 +35,7 @@
     "name": "昼夜/季节变换",
     "description": "一键转换时间与季节",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🌗",
     "page": {
       "title": "昼夜与季节 AI 变换",
@@ -65,7 +65,7 @@
     "name": "文字风格化",
     "description": "英文转中文，手写体设计",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "✍️",
     "page": {
       "title": "文字风格 AI 转换",
@@ -95,7 +95,7 @@
     "name": "万物皆可手办",
     "description": "生成高品质3D手办模型",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🧸",
     "page": {
       "title": "商业手办 AI 生成",
@@ -126,7 +126,7 @@
     "name": "剪影生成角色",
     "description": "剪影细化为全彩角色",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "👤",
     "page": {
       "title": "剪影 AI 角色生成",
@@ -156,7 +156,7 @@
     "name": "创意元素替换",
     "description": "材质替换、风格转换",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎭",
     "page": {
       "title": "创意元素替换 AI",
@@ -188,7 +188,7 @@
     "name": "AI 影视分镜",
     "description": "剧本一键生成分镜",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎬",
     "page": {
       "title": "AI 影视分镜生成",
@@ -222,7 +222,7 @@
     "name": "角色一致性绘本",
     "description": "一个角色，生成系列故事",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎬",
     "page": {
       "title": "角色一致性 AI 绘本",
@@ -254,7 +254,7 @@
     "name": "艺术风格转换",
     "description": "照片转艺术作品",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎨",
     "page": {
       "title": "艺术风格 AI 转换",
@@ -283,7 +283,7 @@
     "name": "表情包二创",
     "description": "模糊表情包高清+换装",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🤪",
     "page": {
       "title": "表情包 AI 二创",
@@ -311,23 +311,61 @@
   {
     "id": "group-photo",
     "name": "完美大合影",
-    "description": "单人照变完美集体照",
+    "description": "单人照合成完美集体照，解决凑不齐人的痛点",
     "category": "creative",
     "enabled": true,
     "icon": "👥",
     "page": {
       "title": "AI 完美大合影",
-      "subtitle": "不用凑时间，上传单人照自动合成",
-      "features": ["👥 完美表情", "📸 自然站位", "💰 29.9元起"],
-      "uploadText": "上传多张单人/参考图",
-      "uploadHint": "最多支持9张参考图",
-      "processingText": "AI 合成合照中..."
+      "subtitle": "不用凑时间，上传单人照自动合成专业合影",
+      "features": ["👥 完美表情", "📸 自然站位", "🎯 专业合影", "💰 29.9元起"],
+      "uploadText": "上传多张单人照/参考图",
+      "uploadHint": "最多支持9张参考图，适用于比赛团队、专家组、论坛会议等",
+      "processingText": "AI 合成专业合影中..."
     },
     "ai": {
       "model": "doubao-seedream-4-5-251128",
-      "system_prompt": "多人合照生成。根据提供的多张角色参考图，生成一张无违和感的群像大合照。确保每个角色的面部特征与参考图一致，人物之间的站位、互动自然，光影统一，背景协调",
-      "user_prompt_placeholder": "例如：所有角色在草地上野餐，开心地看着镜头",
+      "system_prompt": "生成专业的多人大合影。根据提供的多张角色参考图，生成一张无违和感的群像大合照。确保每个角色的面部特征与参考图一致，人物之间的站位、互动自然（如：抱着膀子、并肩站立、围成圆圈等），光影统一，背景协调。适用于比赛团队、专家组、论坛会议、企业团队等专业场景。整体风格正式、专业、有仪式感",
+      "user_prompt_placeholder": "例如：专家组合影，所有人抱着膀子站成一排，背景是会议室，正式专业",
       "prompt_merge_template": "{system_prompt}。{user_prompt}",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
+    "id": "baby-creative-photo",
+    "name": "宝宝创意照",
+    "description": "将宝宝照片融入各种创意场景，打造专属艺术照",
+    "category": "creative",
+    "enabled": true,
+    "icon": "👶",
+    "page": {
+      "title": "AI 宝宝创意照",
+      "subtitle": "用创意场景，记录宝宝成长的每一个瞬间",
+      "features": ["👶 可爱萌趣", "🎨 创意场景", "📸 艺术照", "💰 29.9元起"],
+      "uploadText": "上传宝宝照片（最多2张）",
+      "uploadHint": "支持上传1-2张宝宝照片，AI将融入创意场景",
+      "processingText": "AI 正在生成宝宝创意照...",
+      "customFields": [
+        { "key": "creative_theme", "label": "创意主题", "type": "text", "required": false, "placeholder": "例如：童话世界、太空冒险、森林小精灵、海洋探索、魔法城堡" },
+        { "key": "baby_age", "label": "宝宝年龄", "type": "text", "required": false, "placeholder": "例如：6个月、1岁、2岁" },
+        { "key": "photo_occasion", "label": "拍摄场景", "type": "text", "required": false, "placeholder": "例如：百天照、周岁照、生日照、日常记录" },
+        { "key": "style_preference", "label": "风格偏好", "type": "text", "required": false, "placeholder": "例如：卡通可爱、梦幻唯美、清新自然、复古文艺" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成宝宝创意艺术照。根据上传的宝宝照片（Character Reference），将宝宝自然地融入各种创意场景中。保持宝宝的面部特征与参考图一致，表情自然可爱。场景可以是童话世界、太空冒险、森林小精灵、海洋探索、魔法城堡等充满想象力的场景。画面温馨可爱，色彩柔和明亮，充满童趣和艺术感。适合打印收藏和社交媒体分享。整体风格可爱、温馨、充满创意",
+      "user_prompt_placeholder": "例如：将宝宝放在童话森林中，周围有小动物和花朵，阳光透过树叶洒下，温馨可爱",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。创意主题：「{creative_theme}」，宝宝年龄：「{baby_age}」，拍摄场景：「{photo_occasion}」，风格：「{style_preference}」",
       "guidance_scale": 6.5,
       "size": "2K",
       "watermark": false,
@@ -345,7 +383,7 @@
     "name": "万能 P 图合成",
     "description": "把人、物、景完美融合",
     "category": "creative",
-    "enabled": true,
+    "enabled": false,
     "icon": "🧩",
     "page": {
       "title": "AI 万能 P 图合成",

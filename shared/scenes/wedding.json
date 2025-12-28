@@ -73,11 +73,49 @@
     }
   },
   {
+    "id": "anniversary-card",
+    "name": "纪念日卡片生成器",
+    "description": "情侣纪念日专属卡片，融合照片与话语生成艺术海报",
+    "category": "wedding",
+    "enabled": true,
+    "icon": "💝",
+    "page": {
+      "title": "纪念日卡片 AI 生成器",
+      "subtitle": "用照片和话语，创造属于你们的纪念时刻",
+      "features": ["💝 高情绪价值", "🎨 艺术感设计", "💬 融合话语", "💰 29.9元起"],
+      "uploadText": "上传双方照片（最多2张）",
+      "uploadHint": "支持上传各自的单人照，AI将融合生成纪念卡片",
+      "processingText": "AI 正在生成您的专属纪念卡片...",
+      "customFields": [
+        { "key": "anniversary_message", "label": "纪念话语", "type": "textarea", "required": true, "placeholder": "例如：在一起的第365天，每一天都因为有你而闪闪发光" },
+        { "key": "anniversary_date", "label": "纪念日期", "type": "text", "required": false, "placeholder": "例如：2024年1月1日" },
+        { "key": "anniversary_type", "label": "纪念类型", "type": "text", "required": false, "placeholder": "例如：恋爱纪念日、结婚纪念日、相识纪念日" },
+        { "key": "design_style", "label": "设计风格", "type": "text", "required": false, "placeholder": "例如：浪漫唯美、简约清新、复古文艺、梦幻星空" }
+      ]
+    },
+    "ai": {
+      "model": "doubao-seedream-4-5-251128",
+      "system_prompt": "生成具有艺术感的纪念日卡片/海报。根据上传的情侣照片（Character Reference），融合生成一张浪漫唯美的纪念卡片。保持人物面部特征与参考图一致，将两人自然地融合在同一画面中，营造温馨浪漫的氛围。背景使用柔和的色调（粉色、暖色、星空、花卉等），添加光斑、心形、星星、花瓣等浪漫装饰元素。文字排版优雅，将纪念话语以艺术化的方式呈现，使用手写体或优雅的衬线字体。整体设计具有现代感和艺术感，适合社交媒体分享和打印收藏。竖版构图，画面温馨浪漫，充满情感温度",
+      "user_prompt_placeholder": "例如：浪漫唯美风格，星空背景，粉色光斑，手写字体，添加心形和星星装饰",
+      "prompt_merge_template": "{system_prompt}。{user_prompt}。纪念话语：「{anniversary_message}」，日期：「{anniversary_date}」，类型：「{anniversary_type}」，风格：「{design_style}」",
+      "guidance_scale": 6.5,
+      "size": "2K",
+      "watermark": false,
+      "supports_multiple_images": true
+    },
+    "pricing": {
+      "base_price": 2990,
+      "currency": "CNY",
+      "display": "29.9",
+      "unit": "元/张"
+    }
+  },
+  {
     "id": "wedding-poster",
     "name": "婚礼海报/邀请函",
     "description": "婚礼宣传海报设计",
     "category": "wedding",
-    "enabled": true,
+    "enabled": false,
     "icon": "💌",
     "page": {
       "title": "婚礼海报 AI 设计",

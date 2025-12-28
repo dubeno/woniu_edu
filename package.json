@@ -1,5 +1,5 @@
 {
-  "name": "lovart-portrait-os",
+  "name": "wow",
   "type": "module",
   "version": "0.1.0",
   "private": true,
@@ -13,8 +13,8 @@
     "email": "your@email.com",
     "name": "Wow Team"
   },
-  "homepage": "https://github.com/yourusername/lovart-portrait-os",
-  "description": "AI Portrait Production OS for Photo Studios",
+  "homepage": "https://github.com/yourusername/wow",
+  "description": "Wow - 重新定义影像创作 | AI图像处理操作系统",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -25,7 +25,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.app.json",
     "release": "bumpp",
     "prepare": "simple-git-hooks",
-    "log": "wrangler pages deployment tail --project-name lovart",
+    "log": "wrangler pages deployment tail --project-name wow",
     "test": "vitest -c vitest.config.ts"
   },
   "dependencies": {

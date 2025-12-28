@@ -4,7 +4,7 @@
     "name": "老照片修复",
     "description": "让珍贵的回忆重现光彩",
     "category": "restoration",
-    "enabled": true,
+    "enabled": false,
     "icon": "📸",
     "page": {
       "title": "老照片 AI 修复",
@@ -44,7 +44,7 @@
     "name": "黑白照片上色",
     "description": "为黑白照片赋予真实色彩",
     "category": "restoration",
-    "enabled": true,
+    "enabled": false,
     "icon": "🎨",
     "page": {
       "title": "黑白照片 AI 上色",
@@ -76,7 +76,7 @@
     "name": "证件照优化",
     "description": "专业证件照质检与美化",
     "category": "restoration",
-    "enabled": true,
+    "enabled": false,
     "icon": "👔",
     "page": {
       "title": "证件照 AI 优化",

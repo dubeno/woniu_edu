@@ -101,13 +101,10 @@ const allScenes = [
 ] as unknown as SceneConfig[]
 
 const categories: CategoryConfig[] = [
-  { id: "restoration", name: "照片修复", icon: "🔧", description: "老照片修复、上色、增强" },
-  { id: "ecommerce", name: "电商设计", icon: "🛍️", description: "详情页、换装、周边设计" },
-  { id: "creative", name: "创意设计", icon: "✨", description: "智能消除、风格迁移、趣味生成" },
-  { id: "social-media", name: "自媒体运营", icon: "📱", description: "封面、海报、卡片生成" },
-  { id: "life-travel", name: "生活文旅", icon: "✈️", description: "明信片、节日祝福、纪念" },
-  { id: "commercial", name: "商业摄影", icon: "📷", description: "人像精修、美食、菜单" },
-  { id: "wedding", name: "婚礼系列", icon: "💒", description: "官宣海报、迎宾海报、请柬设计" }
+  { id: "ecommerce", name: "电商设计", icon: "🛍️", description: "详情页、换装、海报设计" },
+  { id: "wedding", name: "婚礼系列", icon: "💒", description: "官宣海报、迎宾海报设计" },
+  { id: "social-media", name: "自媒体运营", icon: "📱", description: "封面、海报、IP设计" },
+  { id: "creative", name: "实用工具", icon: "✨", description: "智能消除、完美合影" }
 ]
 
 const scenes: ScenesData = {

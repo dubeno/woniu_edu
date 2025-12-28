@@ -1,8 +1,8 @@
-name = "newsnow-ppl"
+name = "wow"
 pages_build_output_dir = "dist/output/public"
 compatibility_date = "2024-10-03"
 
 [[d1_databases]]
-binding = "NEWSNOW_DB"
-database_name = "newsnow-ppl"
-database_id = "59d0b858-7747-459c-9dcf-1748b95b3e2a"
+binding = "WOW_DB"
+database_name = "wow"
+database_id = "e3580aa5-688b-4951-9b94-cbeb3546a2ce"
