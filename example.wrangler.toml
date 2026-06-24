@@ -1,8 +1,8 @@
-name = "wow"
+name = "woniu_ai"
 pages_build_output_dir = "dist/output/public"
 compatibility_date = "2024-10-03"
 
 [[d1_databases]]
-binding = "WOW_DB"
-database_name = "wow"
-database_id = ""
+binding = "woniu_ai"
+database_name = "woniu_ai"
+database_id = "dfcb38d1-f744-43fd-8a39-08a0218cb2c7"

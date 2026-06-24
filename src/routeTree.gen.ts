@@ -11,25 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TemplatesImport } from './routes/templates'
 import { Route as ProfileImport } from './routes/profile'
 import { Route as LoginImport } from './routes/login'
-import { Route as CategoriesImport } from './routes/categories'
+import { Route as CoursesImport } from './routes/courses'
 import { Route as BlogImport } from './routes/blog'
 import { Route as AdminImport } from './routes/admin'
 import { Route as IndexImport } from './routes/index'
-import { Route as ScenesSceneIdImport } from './routes/scenes.$sceneId'
-import { Route as SceneSceneIdImport } from './routes/scene.$sceneId'
-import { Route as CategoryCategoryIdImport } from './routes/category.$categoryId'
+import { Route as CoursesSlugImport } from './routes/courses.$slug'
 import { Route as BlogPostIdImport } from './routes/blog.$postId'
+import { Route as CoursesSlugLearnLessonIdImport } from './routes/courses.$slug.learn.$lessonId'
 
 // Create/Update Routes
-
-const TemplatesRoute = TemplatesImport.update({
-  id: '/templates',
-  path: '/templates',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const ProfileRoute = ProfileImport.update({
   id: '/profile',
@@ -43,9 +35,9 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const CategoriesRoute = CategoriesImport.update({
-  id: '/categories',
-  path: '/categories',
+const CoursesRoute = CoursesImport.update({
+  id: '/courses',
+  path: '/courses',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,28 +59,22 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ScenesSceneIdRoute = ScenesSceneIdImport.update({
-  id: '/scenes/$sceneId',
-  path: '/scenes/$sceneId',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const SceneSceneIdRoute = SceneSceneIdImport.update({
-  id: '/scene/$sceneId',
-  path: '/scene/$sceneId',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const CategoryCategoryIdRoute = CategoryCategoryIdImport.update({
-  id: '/category/$categoryId',
-  path: '/category/$categoryId',
-  getParentRoute: () => rootRoute,
+const CoursesSlugRoute = CoursesSlugImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CoursesRoute,
 } as any)
 
 const BlogPostIdRoute = BlogPostIdImport.update({
   id: '/$postId',
   path: '/$postId',
   getParentRoute: () => BlogRoute,
+} as any)
+
+const CoursesSlugLearnLessonIdRoute = CoursesSlugLearnLessonIdImport.update({
+  id: '/learn/$lessonId',
+  path: '/learn/$lessonId',
+  getParentRoute: () => CoursesSlugRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -116,11 +102,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogImport
       parentRoute: typeof rootRoute
     }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesImport
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -137,13 +123,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileImport
       parentRoute: typeof rootRoute
     }
-    '/templates': {
-      id: '/templates'
-      path: '/templates'
-      fullPath: '/templates'
-      preLoaderRoute: typeof TemplatesImport
-      parentRoute: typeof rootRoute
-    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/$postId'
@@ -151,26 +130,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogPostIdImport
       parentRoute: typeof BlogImport
     }
-    '/category/$categoryId': {
-      id: '/category/$categoryId'
-      path: '/category/$categoryId'
-      fullPath: '/category/$categoryId'
-      preLoaderRoute: typeof CategoryCategoryIdImport
-      parentRoute: typeof rootRoute
+    '/courses/$slug': {
+      id: '/courses/$slug'
+      path: '/$slug'
+      fullPath: '/courses/$slug'
+      preLoaderRoute: typeof CoursesSlugImport
+      parentRoute: typeof CoursesImport
     }
-    '/scene/$sceneId': {
-      id: '/scene/$sceneId'
-      path: '/scene/$sceneId'
-      fullPath: '/scene/$sceneId'
-      preLoaderRoute: typeof SceneSceneIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/scenes/$sceneId': {
-      id: '/scenes/$sceneId'
-      path: '/scenes/$sceneId'
-      fullPath: '/scenes/$sceneId'
-      preLoaderRoute: typeof ScenesSceneIdImport
-      parentRoute: typeof rootRoute
+    '/courses/$slug/learn/$lessonId': {
+      id: '/courses/$slug/learn/$lessonId'
+      path: '/learn/$lessonId'
+      fullPath: '/courses/$slug/learn/$lessonId'
+      preLoaderRoute: typeof CoursesSlugLearnLessonIdImport
+      parentRoute: typeof CoursesSlugImport
     }
   }
 }
@@ -187,32 +159,51 @@ const BlogRouteChildren: BlogRouteChildren = {
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
+interface CoursesSlugRouteChildren {
+  CoursesSlugLearnLessonIdRoute: typeof CoursesSlugLearnLessonIdRoute
+}
+
+const CoursesSlugRouteChildren: CoursesSlugRouteChildren = {
+  CoursesSlugLearnLessonIdRoute: CoursesSlugLearnLessonIdRoute,
+}
+
+const CoursesSlugRouteWithChildren = CoursesSlugRoute._addFileChildren(
+  CoursesSlugRouteChildren,
+)
+
+interface CoursesRouteChildren {
+  CoursesSlugRoute: typeof CoursesSlugRouteWithChildren
+}
+
+const CoursesRouteChildren: CoursesRouteChildren = {
+  CoursesSlugRoute: CoursesSlugRouteWithChildren,
+}
+
+const CoursesRouteWithChildren =
+  CoursesRoute._addFileChildren(CoursesRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
-  '/categories': typeof CategoriesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
-  '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/scene/$sceneId': typeof SceneSceneIdRoute
-  '/scenes/$sceneId': typeof ScenesSceneIdRoute
+  '/courses/$slug': typeof CoursesSlugRouteWithChildren
+  '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
-  '/categories': typeof CategoriesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
-  '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/scene/$sceneId': typeof SceneSceneIdRoute
-  '/scenes/$sceneId': typeof ScenesSceneIdRoute
+  '/courses/$slug': typeof CoursesSlugRouteWithChildren
+  '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
 }
 
 export interface FileRoutesById {
@@ -220,14 +211,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRouteWithChildren
-  '/categories': typeof CategoriesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
-  '/templates': typeof TemplatesRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/scene/$sceneId': typeof SceneSceneIdRoute
-  '/scenes/$sceneId': typeof ScenesSceneIdRoute
+  '/courses/$slug': typeof CoursesSlugRouteWithChildren
+  '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
 }
 
 export interface FileRouteTypes {
@@ -236,40 +225,34 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/blog'
-    | '/categories'
+    | '/courses'
     | '/login'
     | '/profile'
-    | '/templates'
     | '/blog/$postId'
-    | '/category/$categoryId'
-    | '/scene/$sceneId'
-    | '/scenes/$sceneId'
+    | '/courses/$slug'
+    | '/courses/$slug/learn/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
     | '/blog'
-    | '/categories'
+    | '/courses'
     | '/login'
     | '/profile'
-    | '/templates'
     | '/blog/$postId'
-    | '/category/$categoryId'
-    | '/scene/$sceneId'
-    | '/scenes/$sceneId'
+    | '/courses/$slug'
+    | '/courses/$slug/learn/$lessonId'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/blog'
-    | '/categories'
+    | '/courses'
     | '/login'
     | '/profile'
-    | '/templates'
     | '/blog/$postId'
-    | '/category/$categoryId'
-    | '/scene/$sceneId'
-    | '/scenes/$sceneId'
+    | '/courses/$slug'
+    | '/courses/$slug/learn/$lessonId'
   fileRoutesById: FileRoutesById
 }
 
@@ -277,26 +260,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   BlogRoute: typeof BlogRouteWithChildren
-  CategoriesRoute: typeof CategoriesRoute
+  CoursesRoute: typeof CoursesRouteWithChildren
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
-  TemplatesRoute: typeof TemplatesRoute
-  CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
-  SceneSceneIdRoute: typeof SceneSceneIdRoute
-  ScenesSceneIdRoute: typeof ScenesSceneIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   BlogRoute: BlogRouteWithChildren,
-  CategoriesRoute: CategoriesRoute,
+  CoursesRoute: CoursesRouteWithChildren,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
-  TemplatesRoute: TemplatesRoute,
-  CategoryCategoryIdRoute: CategoryCategoryIdRoute,
-  SceneSceneIdRoute: SceneSceneIdRoute,
-  ScenesSceneIdRoute: ScenesSceneIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -312,13 +287,9 @@ export const routeTree = rootRoute
         "/",
         "/admin",
         "/blog",
-        "/categories",
+        "/courses",
         "/login",
-        "/profile",
-        "/templates",
-        "/category/$categoryId",
-        "/scene/$sceneId",
-        "/scenes/$sceneId"
+        "/profile"
       ]
     },
     "/": {
@@ -333,8 +304,11 @@ export const routeTree = rootRoute
         "/blog/$postId"
       ]
     },
-    "/categories": {
-      "filePath": "categories.tsx"
+    "/courses": {
+      "filePath": "courses.tsx",
+      "children": [
+        "/courses/$slug"
+      ]
     },
     "/login": {
       "filePath": "login.tsx"
@@ -342,21 +316,20 @@ export const routeTree = rootRoute
     "/profile": {
       "filePath": "profile.tsx"
     },
-    "/templates": {
-      "filePath": "templates.tsx"
-    },
     "/blog/$postId": {
       "filePath": "blog.$postId.tsx",
       "parent": "/blog"
     },
-    "/category/$categoryId": {
-      "filePath": "category.$categoryId.tsx"
+    "/courses/$slug": {
+      "filePath": "courses.$slug.tsx",
+      "parent": "/courses",
+      "children": [
+        "/courses/$slug/learn/$lessonId"
+      ]
     },
-    "/scene/$sceneId": {
-      "filePath": "scene.$sceneId.tsx"
-    },
-    "/scenes/$sceneId": {
-      "filePath": "scenes.$sceneId.tsx"
+    "/courses/$slug/learn/$lessonId": {
+      "filePath": "courses.$slug.learn.$lessonId.tsx",
+      "parent": "/courses/$slug"
     }
   }
 }

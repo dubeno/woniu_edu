@@ -14,12 +14,18 @@ const nitroOption: Parameters<typeof viteNitro>[0] = {
   sourceMap: false,
   database: {
     default: {
-      connector: "better-sqlite3",
+      connector: "cloudflare-d1",
+      options: {
+        bindingName: "WONIU_DB",
+      },
     },
   },
   devDatabase: {
     default: {
-      connector: "better-sqlite3",
+      connector: "cloudflare-d1",
+      options: {
+        bindingName: "WONIU_DB",
+      },
     },
   },
   imports: {
@@ -30,12 +36,11 @@ const nitroOption: Parameters<typeof viteNitro>[0] = {
     "@shared": join(projectDir, "shared"),
     "#": join(projectDir, "server"),
   },
-  // 添加静态文件服务（用于照片访问）
   publicAssets: [
     {
       baseURL: "/uploads",
       dir: join(projectDir, "uploads"),
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24 * 7,
     },
   ],
 }
@@ -54,7 +59,7 @@ if (process.env.VERCEL) {
     default: {
       connector: "cloudflare-d1",
       options: {
-        bindingName: "WOW_DB",
+        bindingName: "WONIU_DB",
       },
     },
   }

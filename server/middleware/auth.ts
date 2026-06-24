@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   if (["JWT_SECRET", "G_CLIENT_ID", "G_CLIENT_SECRET"].find(k => !process.env[k])) {
     event.context.disabledLogin = true
     // Allow public APIs without auth
-    const publicApis = ["/api/init", "/api/login", "/api/auth", "/api/oauth", "/api/scenes", "/api/restore", "/api/enable-login"]
+    const publicApis = ["/api/init", "/api/login", "/api/auth", "/api/oauth", "/api/enable-login"]
     if (publicApis.every(p => !url.pathname.startsWith(p)))
       throw createError({ statusCode: 506, message: "Server not configured, disable login" })
   } else {

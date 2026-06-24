@@ -1,5 +1,5 @@
 {
-  "name": "wow",
+  "name": "woniu-ai",
   "type": "module",
   "version": "0.1.0",
   "private": true,
@@ -8,13 +8,7 @@
     "node": ">=22.12.0",
     "pnpm": ">=10.0.0"
   },
-  "author": {
-    "url": "https://github.com/yourusername/",
-    "email": "your@email.com",
-    "name": "Wow Team"
-  },
-  "homepage": "https://github.com/yourusername/wow",
-  "description": "Wow - 重新定义影像创作 | AI图像处理操作系统",
+  "description": "蜗牛AI — FDE · AI Infra · Agent 实战课",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -54,6 +48,7 @@
     "iconv-lite": "^0.6.3",
     "jose": "^6.0.8",
     "jotai": "^2.12.1",
+    "marked": "^18.0.5",
     "md5": "^2.3.0",
     "ofetch": "^1.4.1",
     "overlayscrollbars": "^2.11.1",

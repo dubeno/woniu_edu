@@ -164,3 +164,16 @@ a, button, label[for], [role="button"] {
     0 0 16px 4px rgba(78, 205, 196, 0.5);
   animation: firework-explode 1.5s ease-out forwards;
 }
+
+.prose h1 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.prose h2 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.prose h3 { font-size: 1.1rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.prose p { margin: 0.75rem 0; line-height: 1.7; color: #475569; }
+.prose ul, .prose ol { margin: 0.75rem 0; padding-left: 1.25rem; }
+.prose li { margin: 0.35rem 0; color: #475569; }
+.prose table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+.prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+.prose th { background: #f8fafc; font-weight: 600; }
+.prose blockquote { border-left: 3px solid #818cf8; padding-left: 1rem; color: #64748b; margin: 1rem 0; }
+.prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0; }
+.prose strong { color: #1e293b; }

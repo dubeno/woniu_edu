@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#f8fafc"/>
+  <rect x="20" y="20" width="160" height="160" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="100" y="88" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#64748b">ÿb:®áŒô</text>
+  <text x="100" y="108" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#4f46e5">[AI</text>
+  <text x="100" y="128" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">public/wechat-qr.png</text>
+</svg>
