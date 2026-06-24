@@ -4,6 +4,7 @@ import { Outlet, createRootRouteWithContext } from "@tanstack/react-router"
 import type { QueryClient } from "@tanstack/react-query"
 import { Header } from "~/components/header"
 import { AttributionCapture } from "~/components/AttributionCapture"
+import { WechatFab } from "~/components/WechatFab"
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
@@ -19,6 +20,7 @@ function RootComponent() {
       <main className="flex-1 flex flex-col min-h-0 overflow-y-auto">
         <Outlet />
       </main>
+      <WechatFab />
     </div>
   )
 }

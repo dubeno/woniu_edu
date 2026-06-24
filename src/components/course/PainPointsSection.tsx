@@ -8,16 +8,20 @@ export function PainPointsSection({ course }: PainPointsSectionProps) {
   if (!course.painPoints.length) return null
 
   return (
-    <section className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-6">
-      <h2 className="text-xl font-bold text-gray-900">求职者常见痛点</h2>
-      <p className="mt-1 text-sm text-gray-600">蜗牛AI 根据高频搜索与咨询整理 — 你的问题可能也在其中</p>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+    <section className="mt-10 border-l-2 border-slate-900 bg-slate-50 p-6">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">
+        Job-seeker pain points
+      </h2>
+      <p className="mt-2 text-sm text-slate-600">
+        按高频搜索与咨询整理 — 你的问题可能也在其中
+      </p>
+      <ul className="mt-5 grid gap-3 sm:grid-cols-2">
         {course.painPoints.map((point) => (
           <li
             key={point}
-            className="flex items-start gap-2 rounded-lg bg-white px-3 py-2 text-sm text-gray-700 shadow-sm"
+            className="flex items-start gap-2 text-sm leading-relaxed text-slate-700"
           >
-            <span className="mt-0.5 text-indigo-500">?</span>
+            <span aria-hidden className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-slate-400" />
             {point}
           </li>
         ))}
@@ -27,7 +31,7 @@ export function PainPointsSection({ course }: PainPointsSectionProps) {
           {course.seoKeywords.map((kw) => (
             <span
               key={kw}
-              className="rounded-full bg-white px-2.5 py-1 text-xs text-gray-500 ring-1 ring-gray-200"
+              className="rounded-full border border-slate-200 px-2.5 py-1 text-xs text-slate-600"
             >
               {kw}
             </span>

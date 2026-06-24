@@ -19,8 +19,3 @@ const markdownByFile: Record<string, string> = {
 export function getBlogMarkdown(post: BlogPost): string {
   return markdownByFile[post.markdownFile] ?? ''
 }
-
-
-export function getBlogMarkdown(post: BlogPost): string {
-  return markdownByFile[post.markdownFile] ?? ''
-}

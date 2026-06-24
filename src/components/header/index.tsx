@@ -23,17 +23,20 @@ export function Header() {
     <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 flex-shrink-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br from-indigo-600 to-teal-500 text-white flex items-center justify-center rounded-lg shadow-md text-lg">
-            🐌
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-sm font-semibold tracking-tight text-white">
+            W
           </div>
           <div className="leading-tight">
             <div className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">{brand.name}</div>
-            <div className="hidden text-xs text-gray-500 sm:block">{brand.shortName} 实战课</div>
+            <div className="hidden text-xs text-gray-500 sm:block">{brand.shortName} · AI Career Studio</div>
           </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link to="/courses" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
             全部课程
+          </Link>
+          <Link to="/services" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+            陪跑
           </Link>
           <Link to="/blog" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
             专栏
@@ -86,13 +89,13 @@ export function Header() {
                 </div>
               )
             : (
-                <button
-                  type="button"
-                  onClick={() => navigate({ to: "/login" })}
-                  className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
-                >
-                  登录
-                </button>
+              <button
+                type="button"
+                onClick={() => navigate({ to: "/login" })}
+                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-900 hover:border-slate-400"
+              >
+                登录
+              </button>
               )}
         </div>
       </div>

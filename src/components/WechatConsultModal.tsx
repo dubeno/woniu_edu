@@ -50,16 +50,23 @@ export function WechatConsultModal({
         <p className="mt-2 text-sm text-gray-600">{wechat.consultSubtitle}</p>
         <p className="mt-1 text-xs text-indigo-600">当前课程：{courseTitle}</p>
 
-        <div className="mx-auto mt-6 flex w-48 flex-col items-center">
+        <div className="mx-auto mt-6 flex w-56 flex-col items-center">
           <img
             src={wechat.qrImageUrl}
             alt="微信二维码"
-            className="h-48 w-48 rounded-xl border border-gray-200 object-contain"
+            width={224}
+            height={224}
+            loading="eager"
+            decoding="async"
+            className="h-56 w-56 rounded-xl border border-slate-200 bg-white object-contain p-2"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.opacity = '0.3'
+            }}
           />
-          <p className="mt-3 text-sm font-medium text-gray-800">{wechat.accountHint}</p>
+          <p className="mt-3 text-sm font-medium text-slate-800">{wechat.accountHint}</p>
         </div>
 
-        <p className="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-center text-xs text-amber-800">
+        <p className="mt-4 rounded-md border border-slate-200 px-3 py-2 text-center text-xs text-slate-600">
           发送课程关键词领取免费 Markdown 讲义 · 咨询报名享学员价
         </p>
       </div>

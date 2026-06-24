@@ -38,10 +38,10 @@ function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-full bg-white px-4 py-16 text-center text-gray-500">
+      <div className="min-h-full bg-white px-4 py-16 text-center text-slate-500">
         文章不存在
         <div className="mt-4">
-          <Link to="/blog" className="text-indigo-600 hover:underline">
+          <Link to="/blog" className="text-slate-900 underline underline-offset-4">
             返回专栏
           </Link>
         </div>
@@ -50,50 +50,52 @@ function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-full bg-white">
+    <div className="min-h-full bg-white text-slate-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(post)) }}
       />
 
       <div className="mx-auto max-w-3xl px-4 py-10">
-        <Link to="/blog" className="text-sm text-indigo-600 hover:underline">
-          ← 返回专栏
+        <Link to="/blog" className="text-sm font-medium text-slate-700 underline-offset-4 hover:underline">
+          ← Back to career notes
         </Link>
 
-        <header className="mt-6 border-b border-gray-200 pb-6">
-          <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="rounded-md bg-indigo-50 px-2 py-0.5 font-medium text-indigo-700">
+        <header className="mt-6 border-b border-slate-200 pb-6">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+            <span className="font-medium uppercase tracking-wider text-slate-700">
               {post.category}
             </span>
-            <span className="text-gray-400">·</span>
-            <span className="text-gray-500">
+            <span aria-hidden>·</span>
+            <span>
               {post.readMinutes}
               {' '}
-              分钟阅读
+              min read
             </span>
-            <span className="text-gray-400">·</span>
-            <time className="text-gray-500">{post.publishedAt}</time>
+            <span aria-hidden>·</span>
+            <time>{post.publishedAt}</time>
           </div>
-          <h1 className="mt-4 text-3xl font-bold leading-tight text-gray-900">
+          <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
             {post.title}
           </h1>
-          <p className="mt-3 text-base text-gray-600">{post.description}</p>
+          <p className="mt-3 text-base leading-relaxed text-slate-600">{post.description}</p>
         </header>
 
-        <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/60 p-5">
-          <h2 className="text-sm font-semibold text-amber-900">求职者常见痛点</h2>
-          <ul className="mt-3 space-y-1.5 text-sm text-amber-900">
+        <section className="mt-6 border-l-2 border-slate-900 bg-slate-50 p-5">
+          <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-slate-700">
+            Job-seeker pain points
+          </h2>
+          <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-slate-800">
             {post.painPoints.map(p => (
               <li key={p} className="flex items-start gap-2">
-                <span className="mt-0.5 text-amber-500">?</span>
+                <span aria-hidden className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-slate-400" />
                 {p}
               </li>
             ))}
           </ul>
         </section>
 
-        <article className="prose prose-slate mt-8 max-w-none prose-headings:text-gray-900 prose-a:text-indigo-600">
+        <article className="prose prose-slate mt-8 max-w-none prose-headings:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-a:underline-offset-4">
           <MarkdownContent markdown={markdown} />
         </article>
 
@@ -101,38 +103,38 @@ function BlogPostPage() {
           {post.searchKeywords.map(k => (
             <span
               key={k}
-              className="rounded-full bg-gray-100 px-2.5 py-1 text-xs text-gray-600"
+              className="rounded-full border border-slate-200 px-2.5 py-1 text-xs text-slate-600"
             >
               {k}
             </span>
           ))}
         </section>
 
-        <section className="mt-10 rounded-2xl border border-indigo-200 bg-indigo-50 p-6 text-center">
-          <h3 className="text-lg font-bold text-indigo-900">{post.cta.wechatTitle}</h3>
-          <p className="mt-2 text-sm text-indigo-700">
+        <section className="mt-12 border-t border-slate-900 pt-8 text-center">
+          <h3 className="text-lg font-semibold text-slate-900">{post.cta.wechatTitle}</h3>
+          <p className="mt-2 text-sm text-slate-600">
             或先
             <Link
               to="/courses/$slug/learn/$lessonId"
               params={{ slug: post.cta.freeLessonSlug, lessonId: post.cta.freeLessonId }}
-              className="ml-1 font-medium underline"
+              className="ml-1 font-medium text-slate-900 underline underline-offset-4"
             >
               免费试读
             </Link>
             相关讲义
           </p>
-          <div className="mt-5 flex flex-wrap justify-center gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button
               type="button"
               onClick={() => setConsultOpen(true)}
-              className="rounded-full bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500"
+              className="rounded-md bg-slate-900 px-6 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
             >
               微信咨询
             </button>
             <Link
               to="/courses/$slug"
               params={{ slug: post.courseSlug }}
-              className="rounded-full border border-indigo-600 px-6 py-2.5 text-sm font-semibold text-indigo-600 hover:bg-indigo-100"
+              className="rounded-md border border-slate-300 px-6 py-2.5 text-sm font-medium text-slate-900 hover:border-slate-400"
             >
               查看完整课程
             </Link>

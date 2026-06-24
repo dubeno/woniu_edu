@@ -22,10 +22,10 @@ function MarkdownLessonPage() {
 
   if (!course || !markdown) {
     return (
-      <div className="min-h-full bg-white px-4 py-16 text-center text-gray-500">
+      <div className="min-h-full bg-white px-4 py-16 text-center text-slate-500">
         资料不存在
         <div className="mt-4">
-          <Link to="/courses" className="text-indigo-600 hover:underline">
+          <Link to="/courses" className="text-slate-900 underline underline-offset-4">
             返回课程列表
           </Link>
         </div>
@@ -34,29 +34,39 @@ function MarkdownLessonPage() {
   }
 
   return (
-    <div className="min-h-full bg-gray-50">
+    <div className="min-h-full bg-white text-slate-900">
       <div className="mx-auto max-w-3xl px-4 py-8">
         <Link
           to="/courses/$slug"
           params={{ slug }}
-          className="text-sm text-indigo-600 hover:underline"
+          className="text-sm font-medium text-slate-700 underline-offset-4 hover:underline"
         >
-          ← 返回课程
+          ← Back to course
         </Link>
-        <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-10">
-          <span className="rounded-md bg-teal-100 px-2 py-0.5 text-xs font-medium text-teal-800">免费资料</span>
-          <MarkdownContent markdown={markdown} className="mt-6" />
+
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-10">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+            Free Lesson
+          </span>
+          <h1 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+            {course.title}
+          </h1>
+          <div className="mt-6 border-t border-slate-100 pt-6">
+            <MarkdownContent markdown={markdown} />
+          </div>
         </div>
-        <div className="mt-6 text-center">
+
+        <div className="mt-10 text-center">
           <button
             type="button"
             onClick={() => setConsultOpen(true)}
-            className="rounded-full bg-indigo-600 px-8 py-3 text-sm font-semibold text-white hover:bg-indigo-500"
+            className="rounded-md bg-slate-900 px-8 py-3 text-sm font-medium text-white hover:bg-slate-800"
           >
             扫码咨询 · 领取完整版
           </button>
         </div>
       </div>
+
       <WechatConsultModal
         open={consultOpen}
         onClose={() => setConsultOpen(false)}

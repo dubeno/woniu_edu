@@ -27,6 +27,12 @@ const chapters = [
     { title: '4-2. 实现：检索 + 工具 + 反馈闭环', duration: '36m' },
     { title: '4-3. 部署：API、队列与灰度', duration: '28m' },
   ], '1h 22m'),
+  chapter('agent-5', '模块五 · AI Agent 求职经 2026', [
+    { title: '5-1. 求职地图：基础篇', duration: '阅读', preview: true, freeMarkdown: true },
+    { title: '5-2. 推理与规划篇', duration: '阅读', freeMarkdown: true },
+    { title: '5-3. 记忆 / 工具 / RAG 篇', duration: '阅读', freeMarkdown: true },
+    { title: '5-4. 多 Agent / 生产 / 安全篇', duration: '阅读', freeMarkdown: true },
+  ], 'Markdown 全文'),
 ]
 
 export const aiAgentCourse = buildCourse({

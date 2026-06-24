@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ServicesImport } from './routes/services'
 import { Route as ProfileImport } from './routes/profile'
 import { Route as LoginImport } from './routes/login'
 import { Route as CoursesImport } from './routes/courses'
@@ -22,6 +23,12 @@ import { Route as BlogPostIdImport } from './routes/blog.$postId'
 import { Route as CoursesSlugLearnLessonIdImport } from './routes/courses.$slug.learn.$lessonId'
 
 // Create/Update Routes
+
+const ServicesRoute = ServicesImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const ProfileRoute = ProfileImport.update({
   id: '/profile',
@@ -123,6 +130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileImport
       parentRoute: typeof rootRoute
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/$postId'
@@ -189,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/courses/$slug': typeof CoursesSlugRouteWithChildren
   '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
@@ -201,6 +216,7 @@ export interface FileRoutesByTo {
   '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/courses/$slug': typeof CoursesSlugRouteWithChildren
   '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
@@ -214,6 +230,7 @@ export interface FileRoutesById {
   '/courses': typeof CoursesRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/courses/$slug': typeof CoursesSlugRouteWithChildren
   '/courses/$slug/learn/$lessonId': typeof CoursesSlugLearnLessonIdRoute
@@ -228,6 +245,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/login'
     | '/profile'
+    | '/services'
     | '/blog/$postId'
     | '/courses/$slug'
     | '/courses/$slug/learn/$lessonId'
@@ -239,6 +257,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/login'
     | '/profile'
+    | '/services'
     | '/blog/$postId'
     | '/courses/$slug'
     | '/courses/$slug/learn/$lessonId'
@@ -250,6 +269,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/login'
     | '/profile'
+    | '/services'
     | '/blog/$postId'
     | '/courses/$slug'
     | '/courses/$slug/learn/$lessonId'
@@ -263,6 +283,7 @@ export interface RootRouteChildren {
   CoursesRoute: typeof CoursesRouteWithChildren
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -272,6 +293,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesRoute: CoursesRouteWithChildren,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
+  ServicesRoute: ServicesRoute,
 }
 
 export const routeTree = rootRoute
@@ -289,7 +311,8 @@ export const routeTree = rootRoute
         "/blog",
         "/courses",
         "/login",
-        "/profile"
+        "/profile",
+        "/services"
       ]
     },
     "/": {
@@ -315,6 +338,9 @@ export const routeTree = rootRoute
     },
     "/profile": {
       "filePath": "profile.tsx"
+    },
+    "/services": {
+      "filePath": "services.tsx"
     },
     "/blog/$postId": {
       "filePath": "blog.$postId.tsx",
