@@ -1,6 +1,7 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router"
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router"
 import { useState } from "react"
 import { useLogin } from "~/hooks/useLogin"
+import { brand } from "~/config/brand"
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
@@ -47,96 +48,145 @@ function LoginPage() {
   }
 
   return (
-    <div className="h-full flex items-center justify-center bg-gray-50 overflow-y-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            {isRegister ? "注册账号" : "登录账号"}
-          </h2>
+    <div className="relative flex min-h-full items-center justify-center overflow-hidden bg-[#07060a] px-4 py-16 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/15 blur-[120px]" />
+      </div>
+
+      <div className="relative w-full max-w-md">
+        <div className="mb-8 text-center">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-white"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-sm font-semibold">
+              {brand.name[0]}
+            </span>
+            {brand.name}
+          </Link>
+          <h1 className="mt-8 text-3xl font-semibold tracking-tight">
+            {isRegister ? "创建账号" : "欢迎回来"}
+          </h1>
+          <p className="mt-2 text-sm text-white/50">
+            {isRegister
+              ? "几秒钟开通，解锁课程目录与学习进度同步"
+              : "登录后访问已购课程与个人学习中心"}
+          </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {error && (
-            <div className="rounded-md bg-red-50 p-4">
-              <p className="text-sm text-red-800">{error}</p>
-            </div>
-          )}
-          
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="username" className="sr-only">
-                用户名
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="用户名"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            
-            {isRegister && (
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  邮箱
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="邮箱"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur sm:p-8">
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            {error && (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-300">
+                {error}
               </div>
             )}
-            
-            <div>
-              <label htmlFor="password" className="sr-only">
-                密码
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="密码（至少6个字符）"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
 
-          <div>
+            <Field
+              label="用户名"
+              value={username}
+              onChange={setUsername}
+              placeholder={isRegister ? "woniu_2026" : "用户名或邮箱"}
+              hint={isRegister ? "3-20 个字符" : undefined}
+              autoComplete="username"
+            />
+
+            {isRegister && (
+              <Field
+                label="邮箱"
+                type="email"
+                value={email}
+                onChange={setEmail}
+                placeholder="you@example.com"
+                autoComplete="email"
+              />
+            )}
+
+            <Field
+              label="密码"
+              type="password"
+              value={password}
+              onChange={setPassword}
+              placeholder="••••••••"
+              hint={isRegister ? "至少 6 个字符" : undefined}
+              autoComplete={isRegister ? "new-password" : "current-password"}
+            />
+
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-black transition hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? "处理中..." : isRegister ? "注册" : "登录"}
+              {loading ? (
+                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-black/30 border-t-black" />
+              ) : (
+                <span>{isRegister ? "创建账号" : "登录"}</span>
+              )}
+              <span>→</span>
             </button>
-          </div>
+          </form>
 
-          <div className="text-center">
-            <button
-              type="button"
-              onClick={() => {
-                setIsRegister(!isRegister)
-                setError("")
-              }}
-              className="text-sm text-gray-600 hover:text-gray-900"
-            >
-              {isRegister ? "已有账号？去登录" : "没有账号？去注册"}
-            </button>
+          <div className="mt-6 text-center text-sm text-white/50">
+            {isRegister ? (
+              <>
+                已有账号？{" "}
+                <button
+                  type="button"
+                  onClick={() => { setIsRegister(false); setError("") }}
+                  className="text-violet-300 transition hover:text-violet-200"
+                >
+                  直接登录
+                </button>
+              </>
+            ) : (
+              <>
+                还没账号？{" "}
+                <button
+                  type="button"
+                  onClick={() => { setIsRegister(true); setError("") }}
+                  className="text-violet-300 transition hover:text-violet-200"
+                >
+                  创建一个
+                </button>
+              </>
+            )}
           </div>
-        </form>
+        </div>
+
+        <p className="mt-6 text-center text-[10px] uppercase tracking-[0.3em] text-white/30">
+          session jwt · expires 60d
+        </p>
       </div>
     </div>
+  )
+}
+
+interface FieldProps {
+  label: string
+  value: string
+  onChange: (v: string) => void
+  type?: string
+  placeholder?: string
+  hint?: string
+  autoComplete?: string
+}
+
+function Field({ label, value, onChange, type = "text", placeholder, hint, autoComplete }: FieldProps) {
+  return (
+    <label className="block">
+      <div className="mb-1.5 flex items-center justify-between text-xs text-white/60">
+        <span>{label}</span>
+        {hint && <span className="text-white/30">{hint}</span>}
+      </div>
+      <input
+        type={type}
+        required
+        autoComplete={autoComplete}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none transition focus:border-violet-400/60 focus:bg-white/[0.05]"
+      />
+    </label>
   )
 }

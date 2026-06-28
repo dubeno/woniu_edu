@@ -20,48 +20,43 @@ export function Header() {
   }, [])
 
   return (
-    <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 flex-shrink-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-sm font-semibold tracking-tight text-white">
-            W
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#07060a]/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
+        <Link to="/" className="group flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-sm font-semibold text-white">
+            {brand.name[0]}
           </div>
-          <div className="leading-tight">
-            <div className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">{brand.name}</div>
-            <div className="hidden text-xs text-gray-500 sm:block">{brand.shortName} · AI Career Studio</div>
-          </div>
+          <span className="text-base font-semibold tracking-tight text-white">
+            {brand.name}
+          </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link to="/courses" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-            全部课程
-          </Link>
-          <Link to="/services" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-            陪跑
-          </Link>
-          <Link to="/blog" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-            专栏
-          </Link>
+        <nav className="hidden items-center gap-7 text-sm md:flex">
+          <Link to="/courses" className="text-white/60 transition hover:text-white">课程</Link>
+          <Link to="/services" className="text-white/60 transition hover:text-white">求职陪跑</Link>
+          <Link to="/blog" className="text-white/60 transition hover:text-white">专栏</Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           {loggedIn
             ? (
                 <div className="relative" ref={menuRef}>
                   <button
                     type="button"
                     onClick={() => setShowMenu(!showMenu)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 text-sm transition hover:border-white/20 hover:bg-white/10"
                   >
-                    <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 text-sm font-medium">
-                      {userInfo.username?.[0]?.toUpperCase() || "U"}
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-[10px] font-semibold text-white">
+                      {(userInfo.username || "U")[0]?.toUpperCase()}
                     </div>
-                    <span className="hidden sm:block text-sm text-gray-700">{userInfo.username || "用户"}</span>
+                    <span className="hidden text-xs text-white/80 sm:block">
+                      {userInfo.username || "user"}
+                    </span>
                   </button>
                   {showMenu && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                    <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-white/10 bg-[#0e0b14]/95 py-1 shadow-2xl backdrop-blur">
                       <Link
                         to="/profile"
                         onClick={() => setShowMenu(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
                       >
                         个人中心
                       </Link>
@@ -69,7 +64,7 @@ export function Header() {
                         <Link
                           to="/admin"
                           onClick={() => setShowMenu(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-medium border-t border-gray-100"
+                          className="block border-t border-white/5 px-4 py-2 text-sm text-amber-300 transition hover:bg-amber-500/10"
                         >
                           管理后台
                         </Link>
@@ -80,7 +75,7 @@ export function Header() {
                           logout()
                           setShowMenu(false)
                         }}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-100"
+                        className="w-full border-t border-white/5 px-4 py-2 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
                       >
                         退出登录
                       </button>
@@ -89,14 +84,22 @@ export function Header() {
                 </div>
               )
             : (
-              <button
-                type="button"
-                onClick={() => navigate({ to: "/login" })}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-900 hover:border-slate-400"
-              >
-                登录
-              </button>
-              )}
+              <>
+                <button
+                  type="button"
+                  onClick={() => navigate({ to: "/login" })}
+                  className="rounded-full px-4 py-1.5 text-sm text-white/70 transition hover:text-white"
+                >
+                  登录
+                </button>
+                <Link
+                  to="/courses"
+                  className="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-black transition hover:bg-violet-100"
+                >
+                  开始学习
+                </Link>
+              </>
+            )}
         </div>
       </div>
     </header>

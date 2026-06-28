@@ -23,39 +23,29 @@ export function Modal({ isOpen, onClose, title, children, size = "md" }: ModalPr
   if (!isOpen) return null
 
   const sizeClasses = {
-    sm: "max-w-md",
-    md: "max-w-lg",
+    sm: "max-w-sm",
+    md: "max-w-md",
     lg: "max-w-2xl",
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" />
-      
-      {/* Modal */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
       <div
-        className={`relative bg-white rounded-xl shadow-2xl w-full ${sizeClasses[size]} transform transition-all animate-fade-in`}
+        className={`relative w-full ${sizeClasses[size]} overflow-hidden rounded-2xl border border-white/10 bg-[#0e0b14] shadow-2xl`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        <div className="flex items-center justify-between border-b border-white/5 px-6 py-4">
+          <h3 className="text-base font-semibold text-white">{title}</h3>
+          <button onClick={onClose} className="text-white/50 transition hover:text-white" aria-label="关闭">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
-        
-        {/* Content */}
-        <div className="px-6 py-4">
+
+        <div className="px-6 py-5 text-sm text-white/80">
           {children}
         </div>
       </div>
@@ -84,20 +74,20 @@ export function ConfirmModal({
   cancelText = "取消",
   confirmColor = "blue",
 }: ConfirmModalProps) {
-  const colorClasses = {
-    blue: "bg-blue-600 hover:bg-blue-700 text-white",
-    green: "bg-green-600 hover:bg-green-700 text-white",
-    red: "bg-red-600 hover:bg-red-700 text-white",
-  }
+  const buttonClass = {
+    blue: "bg-white text-black hover:bg-violet-100",
+    green: "bg-white text-black hover:bg-violet-100",
+    red: "bg-red-500 text-white hover:bg-red-600",
+  }[confirmColor]
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
-      <div className="space-y-4">
-        <p className="text-gray-700">{message}</p>
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
+      <div className="space-y-5">
+        <p className="text-sm leading-relaxed text-white/70">{message}</p>
+        <div className="flex justify-end gap-2 border-t border-white/5 pt-4">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            className="rounded-full border border-white/15 bg-transparent px-4 py-2 text-xs text-white/70 transition hover:bg-white/5 hover:text-white"
           >
             {cancelText}
           </button>
@@ -106,7 +96,7 @@ export function ConfirmModal({
               onConfirm()
               onClose()
             }}
-            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${colorClasses[confirmColor]}`}
+            className={`rounded-full px-4 py-2 text-xs font-medium transition ${buttonClass}`}
           >
             {confirmText}
           </button>
@@ -153,11 +143,11 @@ export function InputModal({
     }
   }, [isOpen, defaultValue])
 
-  const colorClasses = {
-    blue: "bg-blue-600 hover:bg-blue-700 text-white",
-    green: "bg-green-600 hover:bg-green-700 text-white",
-    red: "bg-red-600 hover:bg-red-700 text-white",
-  }
+  const buttonClass = {
+    blue: "bg-white text-black hover:bg-violet-100",
+    green: "bg-white text-black hover:bg-violet-100",
+    red: "bg-red-500 text-white hover:bg-red-600",
+  }[confirmColor]
 
   const handleConfirm = () => {
     if (!value.trim()) {
@@ -174,8 +164,8 @@ export function InputModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
-      <div className="space-y-4">
-        <p className="text-gray-700">{message}</p>
+      <div className="space-y-5">
+        <p className="text-sm leading-relaxed text-white/70">{message}</p>
         <div>
           <input
             type={type}
@@ -190,27 +180,27 @@ export function InputModal({
               }
             }}
             placeholder={placeholder}
-            className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
+            className={`w-full rounded-xl border bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none transition focus:bg-white/5 ${
               error
-                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                : "border-gray-300 focus:border-blue-500 focus:ring-blue-200"
+                ? "border-red-500/50 focus:border-red-400"
+                : "border-white/10 focus:border-violet-400/60"
             }`}
             autoFocus
           />
           {error && (
-            <p className="mt-1.5 text-sm text-red-600">{error}</p>
+            <p className="mt-1.5 text-xs text-red-400">{error}</p>
           )}
         </div>
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
+        <div className="flex justify-end gap-2 border-t border-white/5 pt-4">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            className="rounded-full border border-white/15 bg-transparent px-4 py-2 text-xs text-white/70 transition hover:bg-white/5 hover:text-white"
           >
             {cancelText}
           </button>
           <button
             onClick={handleConfirm}
-            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${colorClasses[confirmColor]}`}
+            className={`rounded-full px-4 py-2 text-xs font-medium transition ${buttonClass}`}
           >
             {confirmText}
           </button>
@@ -219,4 +209,3 @@ export function InputModal({
     </Modal>
   )
 }
-

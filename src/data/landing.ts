@@ -28,56 +28,7 @@ export const heroStats: Stat[] = [
   { label: '免费讲义', value: '6 篇' },
 ]
 
-export const trustLogos = [
-  'OpenAI',
-  'Anthropic',
-  'Meta AI',
-  'Google DeepMind',
-  'Nvidia',
-  'Cohere',
-  'Scale AI',
-  'Mistral',
-]
 
-export const learningPath = [
-  {
-    step: '01',
-    title: '免费读讲义',
-    desc: '6 篇 Markdown 资料，植入 60+ AI 求职高频搜索词',
-    href: '/blog',
-  },
-  {
-    step: '02',
-    title: '正课系统学习',
-    desc: 'FDE / AI Infra / Agent 三门实战课，覆盖简历 + 系统设计 + 行为面',
-    href: '/courses',
-  },
-  {
-    step: '03',
-    title: '1v1 模拟面试',
-    desc: '按目标公司定制模拟清单 + 简历项目段 1v1 复盘',
-    href: '/blog/ai-engineer-interview-2026',
-  },
-]
-
-export const valueProps = [
-  {
-    title: '求职导向课程',
-    desc: '每节课都对应一个真实面试问题，不讲空泛概念',
-  },
-  {
-    title: '三门垂直纵深',
-    desc: 'FDE · AI Infra · Agent — 任选一个，做透胜过泛学',
-  },
-  {
-    title: '可上线 POC',
-    desc: '每门课带 1 个端到端可演示交付物，能写进简历',
-  },
-  {
-    title: '微信 1v1 答疑',
-    desc: '课程问题 / 简历 / 模拟面试，扫码直接对接',
-  },
-]
 
 /** AI Infra 求职陪跑 6 步法 — C9 博士后企业一线专家 1v1 带教 */
 export const servicePlan: ServicePlan[] = [
@@ -143,6 +94,160 @@ export const servicePlan: ServicePlan[] = [
   },
 ]
 
+/** AI Infra 求职陪跑价目表 — 套餐 2 (¥8,000) */
+export const coachingPlan = {
+  name: 'AI Infra 求职陪跑',
+  packageName: '套餐 2',
+  price: 8000,
+  duration: '一年',
+  highlights: [
+    'C9 博士后 · 企业一线在职专家亲带',
+    '一年内不限次 1v1 + 群聊答疑',
+    '简历三件套 + 模拟面试 + Offer 谈判',
+  ],
+  categories: [
+    {
+      title: '课程辅导',
+      items: ['课程文档', '配套视频', '日常答疑'],
+    },
+    {
+      title: '项目植入',
+      items: ['硬核项目', '路线规划'],
+    },
+    {
+      title: '求职辅导',
+      items: ['简历优化', '表达技巧', '模拟面试', '面试复盘'],
+    },
+    {
+      title: '服务时长',
+      items: ['一年'],
+    },
+  ],
+}
+
+/** 三大产品包 —— 课程 + 求职陪跑 二合一 */
+export interface Bundle {
+  slug: 'fde' | 'ai-app' | 'ai-infra'
+  name: string
+  tagline: string
+  badge: string
+  price: number
+  duration: string
+  pitch: string
+  highlights: string[]
+  curriculum: string[]
+  projects: string[]
+  outcomes: string[]
+  coaching: { title: string; items: string[] }[]
+}
+
+export const bundles: Bundle[] = [
+  {
+    slug: 'fde',
+    name: 'FDE',
+    tagline: '课程 + 求职陪跑',
+    badge: '入门首选',
+    price: 6000,
+    duration: '一年',
+    pitch: 'Forward Deployed Engineer 方向：客户叙事、客户对接、POC 端到端交付，冲刺 AI 大厂 / 独角兽 FDE 岗位。',
+    highlights: [
+      '客户叙事 · Stakeholder 沟通',
+      'POC 端到端交付 · Playbook 沉淀',
+      '简历项目段公式 · 客户故事公式',
+    ],
+    curriculum: [
+      '课程文档',
+      '配套视频',
+      '日常答疑',
+    ],
+    projects: [
+      '硬核项目',
+      '路线规划',
+    ],
+    outcomes: [
+      '简历优化',
+      '表达技巧',
+      '模拟面试',
+      '面试复盘',
+    ],
+    coaching: [
+      { title: '课程辅导', items: ['课程文档', '日常答疑'] },
+      { title: '项目植入', items: ['硬核项目', '路线规划'] },
+      { title: '求职辅导', items: ['简历优化', '表达技巧', '模拟面试', '面试复盘'] },
+      { title: '服务时长', items: ['一年'] },
+    ],
+  },
+  {
+    slug: 'ai-app',
+    name: 'AI 应用',
+    tagline: '课程 + 求职陪跑',
+    badge: '主流赛道',
+    price: 6000,
+    duration: '一年',
+    pitch: '从 LLM API 到 Agent / RAG 全栈应用，配套项目植入与模拟面试，冲刺 AI 应用工程师岗位。',
+    highlights: [
+      'LLM API · Prompt Engineering · Agent 编排',
+      'RAG · Function Calling · 工具调用',
+      '简历项目段公式 · POC 模板',
+    ],
+    curriculum: [
+      '课程文档',
+      '日常答疑',
+    ],
+    projects: [
+      '硬核项目',
+      '路线规划',
+    ],
+    outcomes: [
+      '简历优化',
+      '表达技巧',
+      '模拟面试',
+      '面试复盘',
+    ],
+    coaching: [
+      { title: '课程辅导', items: ['课程文档', '日常答疑'] },
+      { title: '项目植入', items: ['硬核项目', '路线规划'] },
+      { title: '求职辅导', items: ['简历优化', '表达技巧', '模拟面试', '面试复盘'] },
+      { title: '服务时长', items: ['一年'] },
+    ],
+  },
+  {
+    slug: 'ai-infra',
+    name: 'AI Infra',
+    tagline: '课程 + 求职陪跑',
+    badge: '高薪进阶',
+    price: 8000,
+    duration: '一年',
+    pitch: '覆盖 vLLM / SGLang / CUDA 算子 / 推理优化，针对 AI Infra 与大模型系统岗位。',
+    highlights: [
+      'vLLM / SGLang 推理框架源码',
+      'CUDA 算子 · 性能优化 · 精度优化',
+      '系统设计 · 部署模板 · 内部推荐',
+    ],
+    curriculum: [
+      '课程文档',
+      '配套视频',
+      '日常答疑',
+    ],
+    projects: [
+      '硬核项目',
+      '路线规划',
+    ],
+    outcomes: [
+      '简历优化',
+      '表达技巧',
+      '模拟面试',
+      '面试复盘',
+    ],
+    coaching: [
+      { title: '课程辅导', items: ['课程文档', '配套视频', '日常答疑'] },
+      { title: '项目植入', items: ['硬核项目', '路线规划'] },
+      { title: '求职辅导', items: ['简历优化', '表达技巧', '模拟面试', '面试复盘'] },
+      { title: '服务时长', items: ['一年'] },
+    ],
+  },
+]
+
 export const homeFaqs: FaqItem[] = [
   {
     question: '我是转码 / NG，没有大厂实习能学吗？',
@@ -171,24 +276,6 @@ export const homeFaqs: FaqItem[] = [
   },
 ]
 
-/** 首页"适合谁"对号入座 */
-export const audienceMatch = [
-  {
-    title: '2026 / 2027 NG · 想冲 AI 大厂',
-    desc: '12 周上岸路径 + 简历项目段 + 模拟面试',
-    href: '/blog/no-internship-big-tech-ai',
-  },
-  {
-    title: '在职 MLE / 后端 · 想转 FDE / Agent',
-    desc: '客户叙事 + POC 三件套 + 跨岗跳槽策略',
-    href: '/blog/forward-deployed-engineer-job-description',
-  },
-  {
-    title: 'AI Infra 工程师 · 想冲 Nvidia / Fireworks',
-    desc: '推理优化 + System Design + 部署模板',
-    href: '/blog/llm-inference-optimization-interview',
-  },
-]
 
 export function pickFeaturedCourses(all: Course[], limit = 3): Course[] {
   return all.slice(0, limit)

@@ -44,7 +44,7 @@ export const fdeCourse = buildCourse({
     '沉淀可复用 Playbook，支撑团队规模化交付',
   ],
   chapters,
-  price: 4999,
+  price: 6000,
   originalPrice: 6999,
   seoKeywords: [
     'FDE 求职',

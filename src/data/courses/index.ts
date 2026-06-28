@@ -3,6 +3,7 @@ import { aiAgentCourse } from './ai-agent'
 import { aiInfraCourse } from './ai-infra'
 import { fdeCourse } from './fde'
 
+// 三门纵深课程：FDE · AI 应用（Agent）· AI Infra
 export const courses: Course[] = [fdeCourse, aiInfraCourse, aiAgentCourse]
 
 const courseRegistry: Record<string, Course> = Object.fromEntries(
@@ -28,3 +29,6 @@ export function toCourseListItem(c: Course) {
 }
 
 export const fallbackCourseList = courses.map(toCourseListItem)
+
+/** 全部课程（含暂未上架） */
+export const allCourses: Course[] = [fdeCourse, aiInfraCourse, aiAgentCourse]

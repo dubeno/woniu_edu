@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useEffect } from 'react'
 import { blogPosts } from '~/data/blog'
-import { useBlogSeo } from '~/lib/seo'
+import { useSeo, KEYWORDS, articleJsonLd, breadcrumbJsonLd } from '~/lib/seo'
 import { trackEvent } from '~/lib/analytics'
 
 export const Route = createFileRoute('/blog')({
@@ -13,22 +13,33 @@ function BlogListPage() {
     document.title = '求职专栏 · 蜗牛AI · FDE · AI Infra · Agent'
   }, [])
 
-  useBlogSeo({
-    title: '求职专栏 · 蜗牛AI · AI Engineer Career Notes',
+  useSeo({
+    title: 'AI 求职专栏 · 面经 · 简历 · 系统设计 · 模拟面试 · 蜗牛AI',
     description:
-      '蜗牛AI 求职专栏：覆盖 2026 AI 工程师面试、FDE 求职、LLM 推理优化、AI Agent 工程师等高频话题。',
-    keywords: [
-      'AI 求职',
-      'AI 工程师面试',
-      'FDE',
-      'AI Infra',
-      'AI Agent',
-      'OpenAI 面试',
-      'Anthropic 面试',
-      '北美 AI 求职',
-      '转码 AI',
-    ],
+      '蜗牛AI 求职专栏：覆盖 2026 AI 工程师面试、FDE 面经、AI Infra 推理优化、AI Agent 工程师、AI 系统设计、AI 简历模板等高频话题，每篇对应一个真实 AI 求职搜索词。',
+    keywords: KEYWORDS.blog,
     path: '/blog',
+    type: 'article',
+    jsonLd: [
+      articleJsonLd(blogPosts[0] ?? {
+        slug: 'index',
+        title: 'AI 求职专栏',
+        description: 'AI 求职经验、面经、简历、面试、模拟面试',
+        category: 'AI 求职',
+        tags: [],
+        painPoints: [],
+        searchKeywords: [],
+        cta: { freeLessonSlug: '', freeLessonId: '', wechatTitle: '' },
+        courseSlug: '',
+        publishedAt: new Date().toISOString(),
+        readMinutes: 0,
+        markdownFile: '',
+      }),
+      breadcrumbJsonLd([
+        { name: '蜗牛AI', path: '/' },
+        { name: '求职专栏', path: '/blog' },
+      ]),
+    ],
   })
 
   useEffect(() => {
@@ -38,77 +49,74 @@ function BlogListPage() {
   const categories = Array.from(new Set(blogPosts.map(p => p.category)))
 
   return (
-    <div className="min-h-full bg-white text-slate-900">
-      <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-12">
-          <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-            Career Notes
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            求职专栏
-          </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-            常被搜的 AI 求职问题 + 痛点 + 解法 + 课程入口 — 每篇对应一个高频搜索词。
-          </p>
-        </div>
-      </section>
+    <div className="relative bg-[#07060a] text-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-violet-600/15 blur-[100px]" />
+      </div>
 
-      <section className="mx-auto max-w-5xl px-4 py-10">
-        <div className="mb-8 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-          <span className="uppercase tracking-wider">Topics</span>
-          {categories.map(c => (
-            <span
-              key={c}
-              className="rounded-full border border-slate-200 px-3 py-1 text-slate-600"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+      <div className="relative">
+        <section className="px-4 pb-16 pt-20 sm:pt-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-violet-300/80">Career Notes</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+              求职专栏
+            </h1>
+            <p className="mt-5 text-sm leading-relaxed text-white/55 sm:text-base">
+              高频 AI 求职问题 · 痛点 · 解法 · 课程入口 — 每篇对应一个搜索词。
+            </p>
+          </div>
+        </section>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {blogPosts.map(post => (
-            <Link
-              key={post.slug}
-              to="/blog/$postId"
-              params={{ postId: post.slug }}
-              className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition hover:border-slate-400"
-            >
-              <div className="flex items-center gap-3 text-xs text-slate-500">
-                <span className="font-medium uppercase tracking-wider text-slate-700">
-                  {post.category}
-                </span>
-                <span aria-hidden>·</span>
-                <span>
-                  {post.readMinutes}
-                  {' '}
-                  min read
-                </span>
-                <span aria-hidden>·</span>
-                <time>{post.publishedAt}</time>
-              </div>
+        <section className="mx-auto max-w-6xl px-4 pb-24">
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-2 text-xs">
+            {categories.map(c => (
+              <span
+                key={c}
+                className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-white/60"
+              >
+                {c}
+              </span>
+            ))}
+          </div>
 
-              <h2 className="mt-4 text-lg font-semibold leading-snug text-slate-900 group-hover:underline">
-                {post.title}
-              </h2>
-              <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
-                {post.description}
-              </p>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {blogPosts.map(post => (
+              <Link
+                key={post.slug}
+                to="/blog/$postId"
+                params={{ postId: post.slug }}
+                className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-violet-400/40 hover:bg-white/[0.05]"
+              >
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-white/40">
+                  <span className="text-violet-300/80">{post.category}</span>
+                  <span className="text-white/20">·</span>
+                  <span>{post.readMinutes} min</span>
+                  <span className="text-white/20">·</span>
+                  <time>{post.publishedAt}</time>
+                </div>
 
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {post.tags.slice(0, 4).map(t => (
-                  <span
-                    key={t}
-                    className="rounded-md border border-slate-200 px-2 py-0.5 text-xs text-slate-600"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+                <h2 className="mt-4 text-lg font-semibold leading-snug transition group-hover:text-violet-200">
+                  {post.title}
+                </h2>
+                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/55">
+                  {post.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {post.tags.slice(0, 4).map(t => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-white/50"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

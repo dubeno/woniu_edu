@@ -21,9 +21,6 @@ html.dark {
 
 body {
   --at-apply: color-base bg-base sprinkle-primary text-base;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 button:disabled {
@@ -69,10 +66,6 @@ button:disabled {
   --os-handle-bg-active: rgba(255, 255, 255, 0.66);
 }
 
-
-* {
-  user-select: none;
-}
 
 a, button, label[for], [role="button"] {
   cursor: pointer;

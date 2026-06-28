@@ -22,9 +22,10 @@ const nitroOption: Parameters<typeof viteNitro>[0] = {
   },
   devDatabase: {
     default: {
-      connector: "cloudflare-d1",
+      // 用 libsql —— WASM 实现，无需原生模块（Windows 上 better-sqlite3 native binding 编译失败）
+      connector: "libsql",
       options: {
-        bindingName: "WONIU_DB",
+        url: ":memory:",
       },
     },
   },
